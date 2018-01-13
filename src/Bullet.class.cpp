@@ -3,10 +3,9 @@
 //
 #include "../incl/Bullet.class.hpp"
 
-Bullet::Bullet(void) : GameObj() {
-    _hp = 0;
+Bullet::Bullet(void) : GameObj(), _alive(TRUE), _direction(1), _speed {
+    _alive = 1;
     _direction = 1;
-    _speed = 10;
     _rep = '-';
 }
 
