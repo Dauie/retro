@@ -15,51 +15,47 @@ class GameObj {
 
 public:
 
-    typedef void (GameObj::*Actions)(void);
+	GameObj(void);
+	GameObj(const GameObj &obj);
+	~GameObj(void);
 
-    GameObj(void);
-    GameObj &operator=(GameObj const &rhs);
-    GameObj(const GameObj &obj);
-    ~GameObj(void);
+//setters and getters:
+	
+	float	getXDir(void) const;
+	float	getYDir(void) const;
+	float	getXPos(void) const;
+	float	getYPos(void) const;
+	
+	void	setXDir(float);
+	void	setYDir(float);
+	void	setXPos(float);
+	void	setYPos(float);
 
-    int             getX(void) const;
-    int             getY(void) const;
-    char            getRep(void) const;
-    int             getHp(void) const;
-    int             getMaxHp(void) const;
-    int             getMaxDmg(void) const;
-    int             getSpeed(void) const;
-    void            setX(int);
-    void            setY(int);
-    void            setYMax(int);
-    void            setXMax(int);
-    void            setHp(int);
-    void            takeDamage(unsigned int amt);
-    void            beRepaired(unsigned int amt);
-    void            jumpTo(int x, int y);
-    void            moveRight(void);
-    void            moveUp(void);
-    void            moveDown(void);
-    void            moveLeft(void);
-    void            drawSelf(void) const;
+	bool	isAlive(void) const;
+	void	LivingStatus(bool);
 
+	char	getRep(void) const;
+	void	setRep(char);
 
-//    Actions                     _actions;
+//other stuff:
+
+	virtual void	update(void) = 0;
+	void	move(void);
+	virtual void	draw(void);
+
+//overloads:
+	
+	GameObj	&operator=(GameObj const &rhs);
 
 protected:
 
-    char                        _rep;
-    int                         _hp;
-    unsigned int                _maxHp;
-    unsigned int                _dmg;
-    unsigned int                _maxDmg;
-    unsigned int                _speed;
-    int                         _x;
-    int                         _y;
-    int                         _xMax;
-    int                         _yMax;
+	char _rep;
+	bool _alive;
+	float _dirX;
+	float _dirY;
+	float _posX;
+	float _posY;	
 
-    static const std::string    **_options[];
 };
 
 #endif
