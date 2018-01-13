@@ -40,9 +40,7 @@ private:
     unsigned int    _xMax;
     unsigned int    _yMax;
     int             _input;
-    GameObj         *_enemies;
-    Bullet          *_bullets;
-    Player          _player;
+    GameObj         **_objs;
 };
 
 #endif

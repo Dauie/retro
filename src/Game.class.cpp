@@ -17,8 +17,7 @@ Game::Game(void) : _xMax(0), _yMax(0) {
     _lastRender = 0;
 
     /*Make Game Entities*/
-    _enemies = new GameObj[ENEMYCOUNT];
-    _bullets = new Bullet[BULLETCOUNT];
+
 };
 
 
@@ -45,22 +44,22 @@ int             Game::setInput(int c) {
     return (1);
 }
 
-clock_t          Game::getGameStart() const { return (_gameStart); }
+clock_t			Game::getGameStart() const { return (_gameStart); }
 
-unsigned int     Game::getXMax() const { return (_xMax); }
+unsigned int	Game::getXMax() const { return (_xMax); }
 
-unsigned int     Game::getYMax() const { return (_yMax); }
+unsigned int	Game::getYMax() const { return (_yMax); }
 
-int              Game::getInput() const { return (_input); }
+int				Game::getInput() const { return (_input); }
 
-void             Game::update() {
-    _player.updateSelf(_input, _bullets, BULLETCOUNT, _yMax, _xMax);
-    for (int i = 0; i < BULLETCOUNT; i++) {
-        _bullets[i].updateSelf(_xMax, _yMax);
-    }
+void			Game::update() {
+	_player.updateSelf(_input, _bullets, BULLETCOUNT, _yMax, _xMax);
+	for (int i = 0; i < BULLETCOUNT; i++) {
+		_bullets[i].updateSelf(_xMax, _yMax);
+	}
 }
 
-void             Game::render() const {
+void			Game::render() const {
     _player.drawSelf();
     for (int i = 0; i < BULLETCOUNT; i++) {
         _bullets->drawSelf();

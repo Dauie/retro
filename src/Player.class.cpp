@@ -1,11 +1,10 @@
 
 #include "../incl/Player.class.hpp"
 
-Player::Player(void) : GameObj() {
-    _lives = 3;
-    _rep = '>';
-    _x = 1;
-    _y = 1;
+Player::Player(void) :
+        GameObj(), _lives(3), _alive(TRUE), _rep('>'),
+        _posY(1), _posX(1), _dirX(0), _dirY(0) {
+
 }
 
 Player &Player::operator=(Player const &rhs) {
@@ -13,11 +12,12 @@ Player &Player::operator=(Player const &rhs) {
         return (*this);
     }
     _rep = rhs.getRep();
-    _maxHp = rhs.getMaxHp();
-    _hp = rhs.getHp();
-    _speed = rhs.getSpeed();
-    _x = rhs.getX();
-    _y = rhs.getY();
+    _alive = rhs.isAlive();
+
+    _dirX = rhs._dirX;
+    _dirY = rhs._dirY;
+    _posY = rhs._posY;
+    _posX = rhs._posX;
     return (*this);
 }
 
@@ -29,10 +29,7 @@ Player::~Player(void) {
 
 }
 
-void            Player::updateSelf(int input, Bullet *bullets, int count, int yMax, int xMax) {
-
-    this->setYMax(yMax);
-    this->setXMax(xMax);
+void            Player::update(int input) {
 
     switch(input) {
         case UP:
@@ -48,17 +45,10 @@ void            Player::updateSelf(int input, Bullet *bullets, int count, int yM
             this->moveRight();
             break;
         case FIRE:
-            this->fireBullet(bullets, count );
+            this->fireBullet();
     }
 }
 
-void        Player::fireBullet(Bullet *bullets, int len) {
-    for (int i = 0; i < len; i++) {
-        if (bullets[i].getHp() == 0) {
-            bullets[i].setHp(bullets[i].getMaxHp());
-            bullets[i].setDirection(1);
-            bullets[i].jumpTo(this->_y, this->_x + 1);
-            break;
-        }
-    }
+void        Player::fireBullet() {
+
 }

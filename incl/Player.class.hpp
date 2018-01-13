@@ -17,7 +17,7 @@ public:
     ~Player(void);
 
     void fireBullet(Bullet *bullets, int len);
-    void updateSelf(int input, Bullet *bullets, int count, int yMax, int xMax);
+    void update(int input);
 
 private:
     unsigned int    _lives;
