@@ -4,6 +4,7 @@
 #include <iostream>
 #include <string>
 #include <ncurses.h>
+#include <cmath>
 
 #define UP (int)'w'
 #define DOWN (int)'s'
@@ -11,13 +12,13 @@
 #define RIGHT (int)'d'
 #define FIRE (int)' '
 
-class GameObj {
+class	GameObj {
 
 public:
 
 	GameObj(void);
 	GameObj(const GameObj &obj);
-	~GameObj(void);
+	virtual ~GameObj(void);
 
 //setters and getters:
 	
@@ -32,7 +33,7 @@ public:
 	void	setYPos(float);
 
 	bool	isAlive(void) const;
-	void	LivingStatus(bool);
+	void	livingStatus(bool);
 
 	char	getRep(void) const;
 	void	setRep(char);
@@ -40,12 +41,13 @@ public:
 //other stuff:
 
 	virtual void	update(void) = 0;
-	void	move(void);
+	virtual void	move(void);
 	virtual void	draw(void);
-
+	
+	
 //overloads:
 	
-	GameObj	&operator=(GameObj const &rhs);
+	GameObj	&operator=(GameObj const &obj);
 
 protected:
 
