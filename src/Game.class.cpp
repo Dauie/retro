@@ -4,6 +4,8 @@
 
 #include "../incl/Game.class.hpp"
 
+GameObj Game::objs = new GameObj*[TOTALOBJ];
+
 Game::Game(void) : _xMax(0), _yMax(0) {
     initscr();
     timeout(0);
@@ -17,7 +19,10 @@ Game::Game(void) : _xMax(0), _yMax(0) {
     _lastRender = 0;
 
     /*Make Game Entities*/
-
+	for (int i = 0; i < TOTALOBJ; i++) {
+		Game::objs[i] = nullptr;
+	}
+	new Player;
 };
 
 
@@ -35,34 +40,25 @@ Game::Game(const Game &obj) {
 Game::~Game(void) {
 
     /*Delete Game Entities*/
-    delete _enemies;
-    delete _bullets;
+	for (int i = 0; i < TOTALOBJ; i++) {
+		delete Game::objs[i];
+		Game::objs[i] = nullptr;
+	}
+	delete Game::objs;
     endwin();
-}
-int             Game::setInput(int c) {
-    _input = c;
-    return (1);
 }
 
 clock_t			Game::getGameStart() const { return (_gameStart); }
 
-unsigned int	Game::getXMax() const { return (_xMax); }
-
-unsigned int	Game::getYMax() const { return (_yMax); }
-
-int				Game::getInput() const { return (_input); }
 
 void			Game::update() {
-	_player.updateSelf(_input, _bullets, BULLETCOUNT, _yMax, _xMax);
-	for (int i = 0; i < BULLETCOUNT; i++) {
-		_bullets[i].updateSelf(_xMax, _yMax);
+	for (int i = 0; i < TOTALOBJ; i++) {
+		Game::objs[i]->update();
 	}
 }
 
 void			Game::render() const {
-    _player.drawSelf();
-    for (int i = 0; i < BULLETCOUNT; i++) {
-        _bullets->drawSelf();
+    for (int i = 0; i < TOTALOBJ; i++) {
+        Game::objs[i]->draw();
     }
-
 }

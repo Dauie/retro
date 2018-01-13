@@ -1,11 +1,19 @@
 
-#include "GameObj.hpp"
+#include "GameObj.class.hpp"
 
 GameObj::GameObj(void)
 {
+	for (int i = 0; i < TOTALOBJS; i++)
+	{
+		if (!Game::objs[i])
+		{
+			Game::objs[i] = this;
+			break;
+		}
+	}
 }
 
-GameObj::GameObj(const GameObj &obj);
+GameObj::GameObj(const GameObj &obj)
 {
 	_rep = obj._rep;
 	_alive = obj._alive;
@@ -17,6 +25,14 @@ GameObj::GameObj(const GameObj &obj);
 
 GameObj::~GameObj(void)
 {
+	for (int i = 0; i < TOTALOBJ; i++)
+	{
+		if (Game::objs[i] == this)
+		{
+			Game::objs[i] = nullptr;
+			break;
+		}
+	}
 }
 
 //setters and getters:

@@ -29,26 +29,42 @@ Player::~Player(void) {
 
 }
 
-void            Player::update(int input) {
+void            Player::move(float x, float y) {
+    _dirX += x;
+    _dirY += y;
+
+    _posX += _dirX;
+    _posY += _dirY;
+	_dirX += _dirX < 0.0 ? 0.5 : 0.0;
+	_dirY += _dirY < 0.0 ? 0.5 : 0.0;
+	_dirX -= _dirX > 0.0 ? 0.5 : 0.0;
+	_dirY -= _dirY > 0.0 ? 0.5 : 0.0;
+}
+
+void            Player::update(int input, GameObj **objs, int len) {
 
     switch(input) {
         case UP:
-            this->moveUp();
+            this->move(-1.0, 0.0);
             break;
         case DOWN:
-            this->moveDown();
+            this->move(1.0, 0.0);
             break;
         case LEFT:
-            this->moveLeft();
+            this->move(0.0, -1.0);
             break;
         case RIGHT:
-            this->moveRight();
+            this->move(0.0, 1.0);
             break;
         case FIRE:
-            this->fireBullet();
+            this->fireBullet(objs);
     }
 }
 
-void        Player::fireBullet() {
-
+void        Player::fireBullet(GameObj **objs) {
+	for (int i = 0; i < TOTALOBJ; i++) {
+		if (objs[i] == NULL) {
+			objs[i] = new Bullet;
+		}
+	}
 }

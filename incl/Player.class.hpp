@@ -5,6 +5,7 @@
 #ifndef PLAYER_CLASS_HPP
 #define PLAYER_CLASS_HPP
 
+#include "Game.class.hpp"
 #include "GameObj.class.hpp"
 #include "Bullet.class.hpp"
 
@@ -16,8 +17,8 @@ public:
     Player(const Player &obj);
     ~Player(void);
 
-    void fireBullet(Bullet *bullets, int len);
-    void update(int input);
+    void fireBullet(GameObjs **objs);
+    void update(int input, GameObjs **objs);
 
 private:
     unsigned int    _lives;
