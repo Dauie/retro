@@ -5,6 +5,9 @@
 #include "../incl/Game.class.hpp"
 
 GameObj Game::objs = new GameObj*[TOTALOBJ];
+unsigned int Game::yMax = 0;
+unsigned int Game::xMax = 0;
+unsigned int Game::input = 0;
 
 Game::Game(void) : _xMax(0), _yMax(0) {
     initscr();
@@ -14,13 +17,13 @@ Game::Game(void) : _xMax(0), _yMax(0) {
     cbreak();
     noecho();
     nodelay(stdscr, TRUE);
-    getmaxyx(stdscr, _xMax, _yMax);
+    getmaxyx(stdscr, xMax, yMax);
     _gameStart = clock();
     _lastRender = 0;
 
     /*Make Game Entities*/
 	for (int i = 0; i < TOTALOBJ; i++) {
-		Game::objs[i] = nullptr;
+		objs[i] = nullptr;
 	}
 	new Player;
 };
@@ -41,8 +44,8 @@ Game::~Game(void) {
 
     /*Delete Game Entities*/
 	for (int i = 0; i < TOTALOBJ; i++) {
-		delete Game::objs[i];
-		Game::objs[i] = nullptr;
+		delete objs[i];
+		objs[i] = nullptr;
 	}
 	delete Game::objs;
     endwin();
@@ -53,12 +56,12 @@ clock_t			Game::getGameStart() const { return (_gameStart); }
 
 void			Game::update() {
 	for (int i = 0; i < TOTALOBJ; i++) {
-		Game::objs[i]->update();
+		objs[i]->update();
 	}
 }
 
 void			Game::render() const {
     for (int i = 0; i < TOTALOBJ; i++) {
-        Game::objs[i]->draw();
+        objs[i]->draw();
     }
 }

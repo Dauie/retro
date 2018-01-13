@@ -42,3 +42,10 @@ private:
 };
 
 #endif
+
+
+
+new player
+new spawner(x, y)
+new spawners(x, y)
+
