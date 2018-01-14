@@ -34,35 +34,35 @@ Player::~Player(void) {
 }
 
 void            Player::move(float dirX, float dirY) {
-    _dirX += dirX;
-    _dirY += dirY;
-
-    _posX += _dirX;
-    _posY += _dirY;
-	_dirX += _dirX < 0.0 ? 0.5 : 0.0;
-	_dirY += _dirY < 0.0 ? 0.5 : 0.0;
-	_dirX -= _dirX > 0.0 ? 0.5 : 0.0;
-	_dirY -= _dirY > 0.0 ? 0.5 : 0.0;
+    _posX += dirX;
+    _posY += dirY;
 }
 
 void            Player::update() {
 
     switch(Game::input) {
         case UP:
-            this->move(-1.0, 0.0);
+            this->setXDir(-1.5);
             break;
         case DOWN:
-            this->move(1.0, 0.0);
+            this->setXDir(1.5);
             break;
         case LEFT:
-            this->move(0.0, -1.0);
+            this->setYDir(-1.5);
             break;
         case RIGHT:
-            this->move(0.0, 1.0);
+            this->setYDir(1.5);
             break;
         case FIRE:
             this->fireBullet();
     }
+	this->move(this->_dirX, this->_dirY);
+	if (_dirX == 0 && _dirY == 0)
+		return;
+	_dirX += _dirX < 0.0 ? 0.5 : 0.0;
+	_dirY += _dirY < 0.0 ? 0.5 : 0.0;
+	_dirX -= _dirX > 0.0 ? 0.5 : 0.0;
+	_dirY -= _dirY > 0.0 ? 0.5 : 0.0;
 }
 
 void        Player::fireBullet() {
