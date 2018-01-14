@@ -10,6 +10,8 @@
 #include "BasicEnemy.class.hpp"
 #include "Particle.class.hpp"
 #include "StrongEnemy.class.hpp"
+#include "Background.class.hpp"
+
 
 #include <ncurses.h>
 #include <unistd.h>

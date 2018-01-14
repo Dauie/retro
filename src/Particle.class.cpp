@@ -12,11 +12,11 @@ Particle::Particle(float posX, float posY) : GameObj(1) {
 	_rep = '.';
 	_color = COLOR_GREEN;
 	_alive = true;
-	_dirY = rand()%2 == 1 ? (float)(rand() % 3) * 1 : (float)(rand() % 3) * .1;
-	_dirX = rand()%2 == 1 ? (float)(rand() % 3) * 1 : (float)(rand() % 3) * .1;
+	_dirY = rand()%2 == 1 ? (float)(rand() % 5 + 1) * 0.5 : (float)(rand() % 5 + 1) * -0.5;
+	_dirX = rand()%2 == 1 ? (float)(rand() % 5 + 1) * 0.5 : (float)(rand() % 5 + 1) * -0.5;
 	_posX = posX;
 	_posY = posY;
-	_ttl = 16;
+	_ttl = 24;
 	for (int i = COLLIDABLE; i < TOTALOBJ; i++)
 	{
 		if (!Game::objs[i])

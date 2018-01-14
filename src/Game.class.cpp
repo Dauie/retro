@@ -31,7 +31,8 @@ Game::Game(void) {
 	start_color();
     _gameStart = clock();
     _lastRender = 0;
-
+    init_color(COLOR_GREEN, 200, 200, 200);
+    
     /*Make Game Entities*/
 	for (int i = 0; i < TOTALOBJ; i++) {
 		objs[i] = nullptr;
@@ -43,6 +44,7 @@ Game::Game(void) {
 
 	new StrongEnemy(0, 0.1, 40, 80);
 
+	_background = new Background;
 };
 
 
@@ -78,17 +80,18 @@ void			Game::update() {
 			objs[i]->update();
 		}
 	}
-
+	_background->update();
 }
-void			Game::render() const {
-    for (int i = 0; i < TOTALOBJ; i++) {
+void			Game::render() const
+{
+	for (int i = 0; i < TOTALOBJ; i++) {
 		if (objs[i]) {
-        	objs[i]->draw();
+			objs[i]->draw();
 		}
-    }
+	}
+	_background->draw();
 	Game::scoreboard(((Player *)(objs[0]))->getLives());
-	Game::drawBorder();   
-
+	Game::drawBorder();
 }
 
 void	Game::drawBorder(void) const{
