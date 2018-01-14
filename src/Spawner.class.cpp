@@ -38,6 +38,7 @@ void	Spawner::update(void)
 	if (!this->isAlive())
 	{
 		delete this;
+		return;
 	}
 
 	if (_curModCycle % _cyclesPerSpawn == 0)

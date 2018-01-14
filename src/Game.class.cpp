@@ -96,7 +96,7 @@ void			Game::render() const
 		}
 	}
 	_background->draw();
-	Game::scoreboard(((Player *)(objs[0]))->getLives());
+	Game::scoreboard((objs[0]));
 	Game::drawBorder();
 	if (objs[0]==nullptr)
 		Game::GameOver();
