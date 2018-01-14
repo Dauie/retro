@@ -29,6 +29,17 @@ BasicEnemy::BasicEnemy(float dirX, float dirY, float posX, float posY)
 
 BasicEnemy::~BasicEnemy(void)
 {
+	new Particle(_posX, _posY);
+	new Particle(_posX, _posY);
+	new Particle(_posX, _posY);
+	new Particle(_posX, _posY);
+	new Particle(_posX, _posY);
+	new Particle(_posX, _posY);
+	new Particle(_posX, _posY);
+	new Particle(_posX, _posY);
+	new Particle(_posX, _posY);
+	new Particle(_posX, _posY);
+
 }
 
 void	BasicEnemy::update(void)

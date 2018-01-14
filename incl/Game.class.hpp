@@ -19,6 +19,8 @@ public:
     void                    render(void) const;
     unsigned int            getFps(void) const;
     clock_t                 getGameStart() const;
+	clock_t					getProcStart() const;
+	void					setProcStart(clock_t start);
 	void					collision();
 	int						setInput(int c);
 
@@ -29,6 +31,7 @@ public:
 
 private:
     clock_t         _gameStart;
+	clock_t			_procStart;
     clock_t         _lastRender;
     unsigned int    _frames;
     unsigned int    _fps;

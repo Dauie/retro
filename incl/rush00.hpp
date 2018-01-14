@@ -17,6 +17,6 @@
 #include <stdio.h>
 #include <string>
 #include <cstring>
-#include <ctime>
+#include <sys/time.h>
 
 #endif

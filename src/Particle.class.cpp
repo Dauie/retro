@@ -10,6 +10,7 @@ Particle::Particle(void) {
 
 Particle::Particle(float posX, float posY) : GameObj(1) {
 	_rep = '.';
+	_alive = true;
 	_dirY = rand()%2 == 1 ? (float)(rand() % 3) * -1 : (float)(rand() % 3);
 	_dirX = rand()%2 == 1 ? (float)(rand() % 3) * -1 : (float)(rand() % 3);
 	_posX = posX;
@@ -73,10 +74,12 @@ void	Particle::move(float x, float y) {
 	(void)y;
 
 	_posX += _dirX;
-	_posY += _posY;
+	_posY += _dirY;
 }
 
 void	Particle::update(void) {
 	_ttl -= 1;
 	this->move(0.0, 0.0);
+	if (_ttl == 0)
+		_alive = false;
 }

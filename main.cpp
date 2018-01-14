@@ -1,6 +1,9 @@
 #include "rush00.hpp"
 
-#define DELAY 30000
+#define DELAY 42000 / 2
+
+#define CLOCKS_PER_MS (CLOCKS_PER_SEC / 1000)
+
 
 int main(void) {
     Game    main;

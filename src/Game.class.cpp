@@ -55,7 +55,8 @@ int				Game::setInput(int c) {
 }
 
 clock_t			Game::getGameStart() const { return (_gameStart); }
-
+clock_t			Game::getProcStart() const { return (_procStart); }
+void			Game::setProcStart(clock_t start) { _procStart = start; }
 
 void			Game::update() {
 	for (int i = 0; i < TOTALOBJ; i++) {
@@ -76,7 +77,7 @@ void			Game::render() const {
 
 static bool	isbetween(float n, float a, float b)
 {
-	float error = 1.5;
+	float error = 1.0;
 
 	if (n <= a + error && n >= b - error)
 		return (true);

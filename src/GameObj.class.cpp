@@ -50,6 +50,7 @@ void	GameObj::setYDir(float f) { _dirY = f; }
 void	GameObj::setXPos(float f) { _posX = f; }
 void	GameObj::setYPos(float f) { _posY = f; }
 
+
 bool	GameObj::isAlive(void) const { return (_alive); }
 void	GameObj::livingStatus(bool b) { _alive = b; }
 
