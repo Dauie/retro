@@ -17,8 +17,8 @@ public:
     Player(const Player &obj);
     ~Player(void);
 
-    void fireBullet(GameObjs **objs);
-    void update(int input, GameObjs **objs);
+    void fireBullet(void);
+    void update(void);
 
 private:
     unsigned int    _lives;

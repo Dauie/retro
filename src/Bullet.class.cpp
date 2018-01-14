@@ -3,14 +3,16 @@
 //
 #include "../incl/Bullet.class.hpp"
 
-Bullet::Bullet(void) : GameObj(), _alive(TRUE), _direction(1), _speed {
-    _alive = 1;
-    _direction = 1;
-    _rep = '-';
+Bullet::Bullet(void) : GameObj(), _alive(TRUE), _dirX(0.0),
+                       _dirY(0.0), _posY(0.0), _posX(0.0){
+
 }
 
-Bullet::Bullet(int direction) : GameObj() {
-   _direction = direction;
+Bullet::Bullet( float dirY, float posX, float posY) : GameObj() {
+	_rep = '-';
+	_dirY = dirY;
+	_posX = posX;
+	_posY = posY;
 }
 
 
@@ -18,13 +20,11 @@ Bullet &Bullet::operator=(Bullet const &rhs) {
     if (this != &rhs) {
         return (*this);
     }
-    _rep = rhs.getRep();
-    _maxHp = rhs.getMaxHp();
-    _hp = rhs.getHp();
-    _speed = rhs.getSpeed();
-    _x = rhs.getX();
-    _y = rhs.getY();
-    _direction = rhs.getDirection();
+	_rep = rhs._rep;
+	_dirX = rhs._dirX;
+	_dirY = rhs._dirY;
+	_posY = rhs._posY;
+	_posX = rhs._posX;
     return (*this);
 }
 
@@ -33,24 +33,28 @@ Bullet::Bullet(const Bullet &obj){
 }
 
 Bullet::~Bullet(void){
-
 }
 
-void        Bullet::setDirection(int direction) {
-    _direction = direction;
+void        Bullet::checkPos(void) {
+	if (this->getYPos() >= Game::yMax)
+		this->_alive = false;
+	else if (this->getYPos() <= 0)
+		this->_alive = false;
+	if (this->getXPos() >= Game::xMax)
+		this->_alive = false;
+	else if (this->getXPos() <= 0)
+		this->_alive = false;
 }
 
-int        Bullet::getDirection() const {
-    return (_direction);
+void		Bullet::move(float x, float y) {
+	/*Satisfy compiler*/
+	_dirY += y;
+	_dirX += x;
+	/*Slowly increase speed.*/
+	_dirY += _dirY < 0 ? -.1 : .1;
+	_posY += _dirY;
+	checkPos();
 }
-
-void        Bullet::updateSelf(int x, int y) {
-    setXMax(x);
-    setYMax(y);
-    if (getHp() == 0)
-        return;
-    if (_direction == 1)
-        this->moveRight();
-    else
-        this->moveLeft();
+void        Bullet::update() {
+	move(0.0, 0.0);
 }

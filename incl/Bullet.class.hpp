@@ -11,17 +11,14 @@ class   Bullet : public GameObj {
 
 public:
     Bullet(void);
-    Bullet(int);
+    Bullet(float x, float y);
     Bullet &operator=(Bullet const &rhs);
     Bullet(const Bullet &obj);
     ~Bullet(void);
-    void    setDirection(int);
-    int     getDirection(void) const;
-    void    updateSelf(int x, int y);
+
+	void        checkPos(void);
 
 private:
-    /*Greater than 0 right, less than 0 left*/
-    int _direction;
 };
 
 
