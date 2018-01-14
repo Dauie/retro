@@ -8,6 +8,7 @@
 #include "Bullet.class.hpp"
 #include "macros.hpp"
 #include "BasicEnemy.class.hpp"
+#include "Particle.class.hpp"
 
 #include <ncurses.h>
 #include <unistd.h>

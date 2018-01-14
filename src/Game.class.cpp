@@ -17,6 +17,7 @@ Game::Game(void) {
     noecho();
     nodelay(stdscr, TRUE);
     getmaxyx(stdscr, xMax, yMax);
+	std::srand(time(NULL));
     _gameStart = clock();
     _lastRender = 0;
 
@@ -100,9 +101,9 @@ static bool	objects_will_collide(GameObj *o1, GameObj *o2)
 		x1d = 1;
 	if (fabs(x2d) <= 0.01 && fabs(y2d) <= 0.01)
 		x2d = 1;
-	
+
 	float l1a, l1b, l1c, l2a, l2b, l2c;
-	
+
 	l1a = y1d;
 	l1b = -x1d;
 	l1c = l1a * x1p + l1b * y1p;
@@ -110,7 +111,7 @@ static bool	objects_will_collide(GameObj *o1, GameObj *o2)
 	l2a = y2d;
 	l2b = -x2d;
 	l2c = l2a * x2p + l2b * y2p;
-	
+
 	float det = l1a * l2b - l2a * l1b;
 
 	if (det == 0)
@@ -118,7 +119,7 @@ static bool	objects_will_collide(GameObj *o1, GameObj *o2)
 
 	float ix = (l2b * l1c - l1b * l2c) / det;
 	float iy = (l1a * l2c - l2a * l1c) / det;
-		
+
 	if (isbetween(ix, x1p, x1p + x1d) &&
 	    isbetween(iy, y1p, y1p + y1d) &&
 	    isbetween(ix, x1p, x1p + x1d) &&
@@ -131,11 +132,11 @@ static bool	objects_will_collide(GameObj *o1, GameObj *o2)
 
 void			Game::collision(void)
 {
-	for (int i = 0; i < TOTALOBJ; i++)
+	for (int i = 0; i < COLLIDABLE; i++)
 	{
 		if (!objs[i])
 			continue;
-		for (int j = 0; j < TOTALOBJ; j++)
+		for (int j = 0; j < COLLIDABLE; j++)
 		{
 			if (!objs[j])
 				continue;

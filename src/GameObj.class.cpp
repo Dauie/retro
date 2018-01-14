@@ -12,6 +12,9 @@ GameObj::GameObj(void)
 		}
 	}
 }
+GameObj::GameObj(int)
+{
+}
 
 GameObj::GameObj(const GameObj &obj)
 {
