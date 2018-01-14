@@ -1,0 +1,134 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CodeBlocks_project_file>
+	<FileVersion major="1" minor="6"/>
+	<Project>
+		<Option title="retro"/>
+		<Option makefile_is_custom="1"/>
+		<Option compiler="gcc"/>
+		<Option virtualFolders="CMake Files\;"/>
+		<Build>
+			<Target title="all">
+				<Option working_dir="/nfs/2016/r/rlutt/code/retro/cmake-build-debug"/>
+				<Option type="4"/>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j4 -f &quot;/nfs/2016/r/rlutt/code/retro/cmake-build-debug/Makefile&quot;  VERBOSE=1 all"/>
+					<CompileFile command="/usr/bin/make -j4 -f &quot;/nfs/2016/r/rlutt/code/retro/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j4 -f &quot;/nfs/2016/r/rlutt/code/retro/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j4 -f &quot;/nfs/2016/r/rlutt/code/retro/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="edit_cache">
+				<Option working_dir="/nfs/2016/r/rlutt/code/retro/cmake-build-debug"/>
+				<Option type="4"/>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j4 -f &quot;/nfs/2016/r/rlutt/code/retro/cmake-build-debug/Makefile&quot;  VERBOSE=1 edit_cache"/>
+					<CompileFile command="/usr/bin/make -j4 -f &quot;/nfs/2016/r/rlutt/code/retro/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j4 -f &quot;/nfs/2016/r/rlutt/code/retro/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j4 -f &quot;/nfs/2016/r/rlutt/code/retro/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="rebuild_cache">
+				<Option working_dir="/nfs/2016/r/rlutt/code/retro/cmake-build-debug"/>
+				<Option type="4"/>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j4 -f &quot;/nfs/2016/r/rlutt/code/retro/cmake-build-debug/Makefile&quot;  VERBOSE=1 rebuild_cache"/>
+					<CompileFile command="/usr/bin/make -j4 -f &quot;/nfs/2016/r/rlutt/code/retro/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j4 -f &quot;/nfs/2016/r/rlutt/code/retro/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j4 -f &quot;/nfs/2016/r/rlutt/code/retro/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="retro">
+				<Option output="/nfs/2016/r/rlutt/code/retro/cmake-build-debug/retro" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="/nfs/2016/r/rlutt/code/retro/cmake-build-debug"/>
+				<Option object_output="./"/>
+				<Option type="1"/>
+				<Option compiler="gcc"/>
+				<Compiler>
+					<Add directory="/usr/local/include"/>
+					<Add directory="/Library/Developer/CommandLineTools/usr/lib/clang/9.0.0/include"/>
+					<Add directory="/Library/Developer/CommandLineTools/usr/include"/>
+					<Add directory="/usr/include"/>
+					<Add directory="/System/Library/Frameworks"/>
+					<Add directory="/Library/Frameworks"/>
+					<Add directory="/Library/Developer/CommandLineTools/usr/include/c++/v1"/>
+				</Compiler>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j4 -f &quot;/nfs/2016/r/rlutt/code/retro/cmake-build-debug/Makefile&quot;  VERBOSE=1 retro"/>
+					<CompileFile command="/usr/bin/make -j4 -f &quot;/nfs/2016/r/rlutt/code/retro/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j4 -f &quot;/nfs/2016/r/rlutt/code/retro/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j4 -f &quot;/nfs/2016/r/rlutt/code/retro/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="retro/fast">
+				<Option output="/nfs/2016/r/rlutt/code/retro/cmake-build-debug/retro" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="/nfs/2016/r/rlutt/code/retro/cmake-build-debug"/>
+				<Option object_output="./"/>
+				<Option type="1"/>
+				<Option compiler="gcc"/>
+				<Compiler>
+					<Add directory="/usr/local/include"/>
+					<Add directory="/Library/Developer/CommandLineTools/usr/lib/clang/9.0.0/include"/>
+					<Add directory="/Library/Developer/CommandLineTools/usr/include"/>
+					<Add directory="/usr/include"/>
+					<Add directory="/System/Library/Frameworks"/>
+					<Add directory="/Library/Frameworks"/>
+					<Add directory="/Library/Developer/CommandLineTools/usr/include/c++/v1"/>
+				</Compiler>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j4 -f &quot;/nfs/2016/r/rlutt/code/retro/cmake-build-debug/Makefile&quot;  VERBOSE=1 retro/fast"/>
+					<CompileFile command="/usr/bin/make -j4 -f &quot;/nfs/2016/r/rlutt/code/retro/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j4 -f &quot;/nfs/2016/r/rlutt/code/retro/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j4 -f &quot;/nfs/2016/r/rlutt/code/retro/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+		</Build>
+		<Unit filename="/nfs/2016/r/rlutt/code/retro/incl/BasicEnemy.class.hpp">
+			<Option target="retro"/>
+		</Unit>
+		<Unit filename="/nfs/2016/r/rlutt/code/retro/incl/Bullet.class.hpp">
+			<Option target="retro"/>
+		</Unit>
+		<Unit filename="/nfs/2016/r/rlutt/code/retro/incl/Game.class.hpp">
+			<Option target="retro"/>
+		</Unit>
+		<Unit filename="/nfs/2016/r/rlutt/code/retro/incl/GameObj.class.hpp">
+			<Option target="retro"/>
+		</Unit>
+		<Unit filename="/nfs/2016/r/rlutt/code/retro/incl/Player.class.hpp">
+			<Option target="retro"/>
+		</Unit>
+		<Unit filename="/nfs/2016/r/rlutt/code/retro/incl/Spawner.class.hpp">
+			<Option target="retro"/>
+		</Unit>
+		<Unit filename="/nfs/2016/r/rlutt/code/retro/incl/macros.hpp">
+			<Option target="retro"/>
+		</Unit>
+		<Unit filename="/nfs/2016/r/rlutt/code/retro/incl/rush00.hpp">
+			<Option target="retro"/>
+		</Unit>
+		<Unit filename="/nfs/2016/r/rlutt/code/retro/main.cpp">
+			<Option target="retro"/>
+		</Unit>
+		<Unit filename="/nfs/2016/r/rlutt/code/retro/src/BasicEnemy.class.cpp">
+			<Option target="retro"/>
+		</Unit>
+		<Unit filename="/nfs/2016/r/rlutt/code/retro/src/Bullet.class.cpp">
+			<Option target="retro"/>
+		</Unit>
+		<Unit filename="/nfs/2016/r/rlutt/code/retro/src/Game.class.cpp">
+			<Option target="retro"/>
+		</Unit>
+		<Unit filename="/nfs/2016/r/rlutt/code/retro/src/GameObj.class.cpp">
+			<Option target="retro"/>
+		</Unit>
+		<Unit filename="/nfs/2016/r/rlutt/code/retro/src/Player.class.cpp">
+			<Option target="retro"/>
+		</Unit>
+		<Unit filename="/nfs/2016/r/rlutt/code/retro/src/Spawner.class.cpp">
+			<Option target="retro"/>
+		</Unit>
+		<Unit filename="/nfs/2016/r/rlutt/code/retro/CMakeLists.txt">
+			<Option virtualFolder="CMake Files\"/>
+		</Unit>
+	</Project>
+</CodeBlocks_project_file>

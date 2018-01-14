@@ -17,6 +17,7 @@ Game::Game(void) {
     noecho();
     nodelay(stdscr, TRUE);
     getmaxyx(stdscr, xMax, yMax);
+	std::srand(time(NULL));
     _gameStart = clock();
     _lastRender = 0;
 
@@ -70,12 +71,12 @@ void			Game::render() const {
 }
 
 void			Game::collision(void){
-	for (int i = 0; i < TOTALOBJ; i++ ){
+	for (int i = 0; i < COLLIDABLE; i++ ){
 		if (!objs[i])
 			continue;
 		int pxi = roundf(objs[i]->getXPos());
 		int pyi = roundf(objs[i]->getYPos());
-		for (int j = 0; j < TOTALOBJ; j++){
+		for (int j = 0; j < COLLIDABLE; j++){
 			if (!objs[j])
 				continue;
 			int pxj = roundf(objs[j]->getXPos());
