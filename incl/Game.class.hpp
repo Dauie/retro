@@ -21,11 +21,14 @@ public:
     clock_t                 getGameStart() const;
 	void					collision();
 	int						setInput(int c);
+    void                    drawBorder(void) const;
+    void                    scoreboard(int l) const;
 
 	static unsigned int    xMax;
 	static unsigned int    yMax;
 	static int             input;
 	static GameObj         **objs;
+    static int              score;
 
 private:
     clock_t         _gameStart;

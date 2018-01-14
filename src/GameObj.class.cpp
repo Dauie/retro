@@ -39,6 +39,7 @@ GameObj::~GameObj(void)
 	}
 }
 
+
 //setters and getters:
 
 float	GameObj::getXDir(void) const { return (_dirX); }

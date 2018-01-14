@@ -34,6 +34,8 @@ Player::~Player(void) {
 
 }
 
+
+
 void            Player::move(float dirX, float dirY) {
 	_posX += dirX;
 	if (_posX < 0)
@@ -82,6 +84,11 @@ void            Player::update() {
 	_dirY += _dirY < 0.0 ? 0.5 : 0.0;
 	_dirX -= _dirX > 0.0 ? 0.5 : 0.0;
 	_dirY -= _dirY > 0.0 ? 0.5 : 0.0;
+}
+
+
+int     Player::getLives() const {
+    return _lives;
 }
 
 void        Player::fireBullet() {
