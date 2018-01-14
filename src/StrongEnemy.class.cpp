@@ -70,7 +70,7 @@ void	StrongEnemy::update(void)
 
 	if (_curModCycle % _cyclesPerShot == 0)
 	{
-		new Bullet(-_dirX, -_dirY, _posX, _posY - 1.0);
+		new Bullet(0.0, _dirY >= 0 ? -_dirY: _dirY, _posX, _posY - 1.0);
 	}
 	
 	_curModCycle++;

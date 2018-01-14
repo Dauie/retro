@@ -52,16 +52,16 @@ void            Player::update() {
 	
     switch(Game::input) {
         case UP:
-            this->setXDir(-1.5);
+            this->setXDir(-1.0);
             break;
         case DOWN:
-            this->setXDir(1.5);
+            this->setXDir(1.0);
             break;
         case LEFT:
-            this->setYDir(-1.5);
+            this->setYDir(-1.0);
             break;
         case RIGHT:
-            this->setYDir(1.5);
+            this->setYDir(1.0);
             break;
         case FIRE:
             this->fireBullet();
