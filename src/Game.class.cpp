@@ -26,6 +26,8 @@ Game::Game(void) {
 		objs[i] = nullptr;
 	}
 	new Player;
+
+	new Spawner(70, 70, 70);
 };
 
 
@@ -70,27 +72,89 @@ void			Game::render() const {
     }
 }
 
-void			Game::collision(void){
-	for (int i = 0; i < COLLIDABLE; i++ ){
+//collision:
+
+static bool	isbetween(float n, float a, float b)
+{
+	float error = 1.5;
+
+	if (n <= a + error && n >= b - error)
+		return (true);
+	if (n >= a - error && n <= b + error)
+		return (true);
+	return (false);
+}
+
+static bool	objects_will_collide(GameObj *o1, GameObj *o2)
+{
+
+	float x1p = o1->getXPos();
+	float x1d = o1->getXDir();
+	float y1p = o1->getYPos();
+	float y1d = o1->getYDir();
+	float x2p = o2->getXPos();
+	float x2d = o2->getXDir();
+	float y2p = o2->getYPos();
+	float y2d = o2->getYDir();
+
+	if (fabs(x1d) <= 0.01 && fabs(y1d) <= 0.01)
+		x1d = 1;
+	if (fabs(x2d) <= 0.01 && fabs(y2d) <= 0.01)
+		x2d = 1;
+
+	float l1a, l1b, l1c, l2a, l2b, l2c;
+
+	l1a = y1d;
+	l1b = -x1d;
+	l1c = l1a * x1p + l1b * y1p;
+
+	l2a = y2d;
+	l2b = -x2d;
+	l2c = l2a * x2p + l2b * y2p;
+
+	float det = l1a * l2b - l2a * l1b;
+
+
+	
+	if (det == 0)
+		return (false);
+
+	float ix = (l2b * l1c - l1b * l2c) / det;
+	float iy = (l1a * l2c - l2a * l1c) / det;
+
+	if (isbetween(ix, x1p, x1p + x1d) &&
+	    isbetween(iy, y1p, y1p + y1d) &&
+	    isbetween(ix, x2p, x2p + x2d) &&
+	    isbetween(iy, y2p, y2p + y2d))
+	{
+		return (true);
+	}
+	return (false);
+}
+
+void			Game::collision(void)
+{
+	for (int i = 0; i < COLLIDABLE; i++)
+	{
 		if (!objs[i])
 			continue;
-		int pxi = roundf(objs[i]->getXPos());
-		int pyi = roundf(objs[i]->getYPos());
-		for (int j = 0; j < COLLIDABLE; j++){
+		for (int j = 0; j < COLLIDABLE; j++)
+		{
 			if (!objs[j])
 				continue;
-			int pxj = roundf(objs[j]->getXPos());
-			int pyj = roundf(objs[j]->getYPos());
-
 			//check to see if objects occupy same space
-			if (pxi == pxj && pyi == pyj)
+			if ( i != j && objects_will_collide(objs[i], objs[j]))
+			{
 				objs[i]->livingStatus(false);
-			objs[j]->livingStatus(false);
+				objs[j]->livingStatus(false);
+			}
 		}
 		//check to see if objects are out of bounds
 		if (i > 0 &&
-			(pyi >= (int)Game::yMax || pyi <= 0 ||
-					pxi >= (int)Game::xMax || pxi <= 0))
+		    (objs[i]->getYPos() >= (int)Game::yMax ||
+		     objs[i]->getYPos() <= 0 ||
+		     objs[i]->getXPos() >= (int)Game::xMax ||
+		     objs[i]->getXPos()<= 0))
 		{
 			objs[i]->livingStatus(false);
 		}

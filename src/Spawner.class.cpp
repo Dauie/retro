@@ -42,8 +42,7 @@ void	Spawner::update(void)
 
 	if (_curModCycle % _cyclesPerSpawn == 0)
 	{
-		BasicEnemy *e = new BasicEnemy(-1, 0, _posX - 1, _posY);
-		(void)e;
+		new BasicEnemy(-0.5, 0, _posX, _posY - 5);
 	}
 	_curModCycle++;
 
