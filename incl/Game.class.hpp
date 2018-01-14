@@ -22,7 +22,8 @@ public:
 	void					collision();
 	int						setInput(int c);
     void                    drawBorder(void) const;
-    void                    scoreboard(int l) const;
+    void                    scoreboard(GameObj *p) const;
+    void                    GameOver() const;
 
 	static unsigned int    xMax;
 	static unsigned int    yMax;

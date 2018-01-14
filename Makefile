@@ -2,7 +2,7 @@ NAME = ft_retro
 
 CC = clang++
 
-CCFLAGS =   -Wfatal-errors -Wall -Werror -Wextra -lncurses -o $(NAME)
+CCFLAGS =   -Wfatal-errors -Wall -Werror -Wextra -fsanitize=address -lncurses -o $(NAME)
 
 SRC = main.cpp src/*.cpp
 

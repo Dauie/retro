@@ -39,7 +39,6 @@ BasicEnemy::~BasicEnemy(void)
 	new Particle(_posX, _posY);
 	new Particle(_posX, _posY);
 	new Particle(_posX, _posY);
-
 }
 
 void	BasicEnemy::update(void)
@@ -47,6 +46,7 @@ void	BasicEnemy::update(void)
 	if (!_alive)
 	{
 		delete this;
+		return;
 	}
 	this->move(0.0, 0.0);
 	this->draw();

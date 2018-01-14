@@ -45,6 +45,7 @@ void	StrongEnemy::update(void)
 	if (!_alive)
 	{
 		delete this;
+		return;
 	}
 
 	if (_curModCycle % _cyclesPerDirChange == 0)
