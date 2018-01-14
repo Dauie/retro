@@ -57,8 +57,9 @@ void            Player::update() {
 		_alive = true;
 	}
 	if (!_lives)
-	{
+	{      
 		delete this;
+        return;
 	}
 	
     switch(Game::input) {

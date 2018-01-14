@@ -39,6 +39,7 @@ void	BasicEnemy::update(void)
 	if (!_alive)
 	{
 		delete this;
+		return;
 	}
 	this->move(0.0, 0.0);
 	this->draw();

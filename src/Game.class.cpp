@@ -86,13 +86,17 @@ void			Game::update() {
 
 }
 void			Game::render() const {
+
     for (int i = 0; i < TOTALOBJ; i++) {
 		if (objs[i]) {
         	objs[i]->draw();
 		}
     }
-	Game::scoreboard(((Player *)(objs[0]))->getLives());
-	Game::drawBorder();   
+ //   GameObj *p =objs[0];
+	Game::scoreboard((objs[0]));
+	Game::drawBorder();
+	if (objs[0]==nullptr)
+    	Game::GameOver();  
 
 }
 
@@ -111,9 +115,27 @@ void	Game::drawBorder(void) const{
 	attroff(COLOR_PAIR(3));
 }
 
-void	Game::scoreboard(int l) const{
-	int w;
+void Game::GameOver() const{
 
+	attron(COLOR_PAIR(2));
+	mvprintw((xMax/2)-15,(yMax/2)-10,"%s","GAME OVER");
+	sleep (3);
+	doupdate();
+	
+	while (getch() == ERR)
+		refresh();
+		;
+	refresh();
+	sleep(10);
+	exit(0);
+}
+
+void	Game::scoreboard(GameObj *p) const{
+	int w;
+	int l=0;
+
+	if (!(p==nullptr))
+		l=((Player *)(p))->getLives();
 	attron(COLOR_PAIR(3));
 	for (int i = 1; i < (int)yMax - 1; i++) {
 		mvaddch(2,i,ACS_HLINE); }
