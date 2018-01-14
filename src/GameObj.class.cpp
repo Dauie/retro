@@ -3,7 +3,7 @@
 
 GameObj::GameObj(void)
 {
-	for (int i = 0; i < TOTALOBJ; i++)
+	for (int i = 0; i < COLLIDABLE; i++)
 	{
 		if (!Game::objs[i])
 		{
@@ -29,7 +29,7 @@ GameObj::GameObj(const GameObj &obj)
 
 GameObj::~GameObj(void)
 {
-	for (int i = 0; i < TOTALOBJ; i++)
+	for (int i = 0; i < COLLIDABLE; i++)
 	{
 		if (Game::objs[i] == this)
 		{

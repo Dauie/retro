@@ -5,20 +5,20 @@
 #include <ctime>
 #include <cmath>
 #include "GameObj.class.hpp"
-
+#include "Background.class.hpp"
 
 
 class Game {
 
 public:
-    Game(void);
-    Game &operator=(Game const &rhs);
-    Game(const Game &obj);
-    ~Game(void);
-    void                    update(void);
-    void                    render(void) const;
-    unsigned int            getFps(void) const;
-    clock_t                 getGameStart() const;
+	Game(void);
+	Game &operator=(Game const &rhs);
+	Game(const Game &obj);
+	~Game(void);
+	void                    update(void);
+	void                    render(void) const;
+	unsigned int            getFps(void) const;
+	clock_t                 getGameStart() const;
 	void					collision();
 	int						setInput(int c);
     void                    drawBorder(void) const;
@@ -29,14 +29,14 @@ public:
 	static unsigned int    yMax;
 	static int             input;
 	static GameObj         **objs;
-    static int              score;
+	static int              score;
 
 private:
-    clock_t         _gameStart;
-	clock_t			_procStart;
-    clock_t         _lastRender;
-    unsigned int    _frames;
-    unsigned int    _fps;
+	clock_t         _gameStart;
+	clock_t         _lastRender;
+	unsigned int    _frames;
+	unsigned int    _fps;
+	Background *_background;
 };
 
 #endif

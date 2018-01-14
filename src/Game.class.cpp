@@ -21,7 +21,7 @@ Game::Game(void) {
     start_color();
 	init_pair(0, COLOR_BLACK, COLOR_BLACK);
 	init_pair(1, COLOR_RED, COLOR_BLACK);
-	init_pair(2, COLOR_GREEN, COLOR_BLACK);
+	init_color(COLOR_GREEN, 200, 200, 200);
 	init_pair(3, COLOR_YELLOW, COLOR_BLACK);
 	init_pair(4, COLOR_BLUE, COLOR_BLACK);
 	init_pair(5, COLOR_MAGENTA, COLOR_BLACK);
@@ -29,13 +29,15 @@ Game::Game(void) {
 	init_pair(7, COLOR_WHITE, COLOR_BLACK);
 	std::srand(time(NULL));
 	if(has_colors() == FALSE)
-	{	endwin();
+	{
+		endwin();
 		printf("Your terminal does not support color\n");
 		exit(1);
 	}
 	start_color();
     _gameStart = clock();
     _lastRender = 0;
+
 
     /*Make Game Entities*/
 	for (int i = 0; i < TOTALOBJ; i++) {
@@ -48,6 +50,7 @@ Game::Game(void) {
 
 	new StrongEnemy(0, 0.1, 40, 80);
 
+	_background = new Background;
 };
 
 
@@ -83,21 +86,20 @@ void			Game::update() {
 			objs[i]->update();
 		}
 	}
-
+	_background->update();
 }
-void			Game::render() const {
-
-    for (int i = 0; i < TOTALOBJ; i++) {
+void			Game::render() const
+{
+	for (int i = 0; i < TOTALOBJ; i++) {
 		if (objs[i]) {
-        	objs[i]->draw();
+			objs[i]->draw();
 		}
-    }
- //   GameObj *p =objs[0];
-	Game::scoreboard((objs[0]));
+	}
+	_background->draw();
+	Game::scoreboard(((Player *)(objs[0]))->getLives());
 	Game::drawBorder();
 	if (objs[0]==nullptr)
-    	Game::GameOver();  
-
+		Game::GameOver();
 }
 
 void	Game::drawBorder(void) const{
@@ -121,7 +123,7 @@ void Game::GameOver() const{
 	mvprintw((xMax/2)-15,(yMax/2)-10,"%s","GAME OVER");
 	sleep (3);
 	doupdate();
-	
+
 	while (getch() == ERR)
 		refresh();
 		;
