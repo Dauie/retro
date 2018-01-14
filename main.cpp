@@ -15,7 +15,7 @@ int main(void) {
         /*Update game entities*/
         main.update();
         /*Clear the Screen*/
-        clear();
+        erase();
 		/*Check for collisions*/
 		main.collision();
         /*Draw all game entities*/

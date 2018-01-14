@@ -16,7 +16,8 @@ public:
     void fireBullet(void);
     void update(void);
 	void move(float dirX, float dirY);
-
+	int  getLives() const;
+	
 private:
     unsigned int    _lives;
 };

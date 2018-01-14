@@ -7,6 +7,7 @@ GameObj** Game::objs = new GameObj*[TOTALOBJ];
 unsigned int Game::yMax = 0;
 unsigned int Game::xMax = 0;
 int Game::input = 0;
+int Game::score =0;
 
 Game::Game(void) {
     initscr();
@@ -17,6 +18,10 @@ Game::Game(void) {
     noecho();
     nodelay(stdscr, TRUE);
     getmaxyx(stdscr, xMax, yMax);
+    start_color();
+	init_pair(1, COLOR_BLUE, COLOR_BLACK);
+	init_pair(2, COLOR_GREEN, COLOR_BLACK);
+	init_pair(3, COLOR_RED, COLOR_BLACK);
 	std::srand(time(NULL));
     _gameStart = clock();
     _lastRender = 0;
@@ -67,6 +72,7 @@ void			Game::update() {
 			objs[i]->update();
 		}
 	}
+
 }
 void			Game::render() const {
     for (int i = 0; i < TOTALOBJ; i++) {
@@ -74,6 +80,46 @@ void			Game::render() const {
         	objs[i]->draw();
 		}
     }
+	Game::scoreboard(((Player *)(objs[0]))->getLives());
+	Game::drawBorder();   
+
+}
+
+void	Game::drawBorder(void) const{
+	attron(COLOR_PAIR(3));
+	for (int i = 1; i < (int)yMax - 1; i++) {
+		mvaddch(0,i,ACS_HLINE);
+		mvaddch(xMax - 1,i,ACS_HLINE); }
+	for (int i = 1; i < (int)xMax - 1; i++) {
+		mvaddch(i,0,ACS_VLINE);
+		mvaddch(i,yMax - 1,ACS_VLINE); }
+	mvaddch(0,0,ACS_ULCORNER);
+	mvaddch(0,yMax - 1,ACS_URCORNER);
+	mvaddch(xMax - 1,0,ACS_LLCORNER);
+	mvaddch(xMax - 1,yMax - 1,ACS_LRCORNER);
+	attroff(COLOR_PAIR(3));
+}
+
+void	Game::scoreboard(int l) const{
+	int w;
+
+	attron(COLOR_PAIR(3));
+	for (int i = 1; i < (int)yMax - 1; i++) {
+		mvaddch(2,i,ACS_HLINE); }
+	w = (yMax / 8) - 1;
+	mvprintw(1,1,"%*s:%-*d",w,"Lives",w,l);
+	addch(ACS_VLINE);
+	printw("%*s:%-*d",w,"Score",w,score);
+	addch(ACS_VLINE);
+	mvaddch(2,0,ACS_LTEE);
+	mvaddch(2,yMax - 1,ACS_RTEE);
+	mvaddch(0,2*w+2,ACS_TTEE);
+	mvaddch(0,4*w+4,ACS_TTEE);
+	mvaddch(0,6*w+6,ACS_TTEE);
+	mvaddch(2,2*w+2,ACS_BTEE);
+	mvaddch(2,4*w+4,ACS_BTEE);
+	mvaddch(2,6*w+6,ACS_BTEE);
+	attroff(COLOR_PAIR(3));
 }
 
 //collision:
