@@ -1,16 +1,10 @@
 
 #include "BasicEnemy.class.hpp"
 
-//this is unfinished!
-
 BasicEnemy::BasicEnemy(void)
 {
 	_rep = 'E';
 	_alive = true;
-	_dirX = -1;
-	_dirY = 0;
-	_posX = 0;
-	_posY = 0;
 }
 
 BasicEnemy::BasicEnemy(const BasicEnemy &obj)
@@ -23,6 +17,16 @@ BasicEnemy::BasicEnemy(const BasicEnemy &obj)
 	_posY = obj._posY;
 }
 
+BasicEnemy::BasicEnemy(float dirX, float dirY, float posX, float posY)
+{
+	_rep = 'E';
+	_alive = true;
+	_dirX = dirX;
+	_dirY = dirY;
+	_posX = posX;
+	_posY = posY;
+}
+
 BasicEnemy::~BasicEnemy(void)
 {
 }
@@ -31,8 +35,7 @@ void	update(void)
 {
 	if (!this->isAlive())
 	{
-		removeEnemy();
-		return ;
+		delete self;
 	}
 	this->move();
 	this->draw();

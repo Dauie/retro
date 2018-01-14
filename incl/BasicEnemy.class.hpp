@@ -3,14 +3,13 @@
 
 #include "GameObj.class.hpp"
 
-//this is unfinished!
-
 class	BasicEnemy : public GameObj {
 
 public:
 
 	BasicEnemy(void);
 	BasicEnemy(const BasicEnemy &obj);
+	BasicEnemy(float dirX, float dirY, float posX, float posY);
 	virtual ~BasicEnemy(void);
 	
 	void	update(void);
