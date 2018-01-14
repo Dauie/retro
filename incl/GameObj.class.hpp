@@ -14,6 +14,7 @@ class	GameObj {
 public:
 
 	GameObj(void);
+	GameObj(int);
 	GameObj(const GameObj &obj);
 	virtual ~GameObj(void);
 
