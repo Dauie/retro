@@ -73,10 +73,9 @@ void	GameObj::draw(void)
 {
 	int x = roundf(_posX);
 	int y = roundf(_posY);
-	init_pair(1, _color, COLOR_BLACK);
-	attron(COLOR_PAIR(1));
+	attron(COLOR_PAIR(_color));
 	mvprintw(x, y, "%c", _rep);
-	attroff(COLOR_PAIR(1));
+	attroff(COLOR_PAIR(_color));
 }
 
 //overloads:
