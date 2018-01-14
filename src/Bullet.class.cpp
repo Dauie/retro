@@ -3,56 +3,52 @@
 //
 #include "rush00.hpp"
 
-Bullet::Bullet(void) : GameObj() {
-
+Bullet::Bullet(void) : GameObj()
+{
 }
 
-Bullet::Bullet( float dirY, float posX, float posY) : GameObj() {
+Bullet::Bullet(float dirX, float dirY, float posX, float posY)
+{
 	_rep = '-';
+	_dirX = dirX;
 	_dirY = dirY;
 	_posX = posX;
 	_posY = posY;
 }
 
 
-Bullet &Bullet::operator=(Bullet const &rhs) {
-    if (this != &rhs) {
-        return (*this);
-    }
+Bullet &Bullet::operator=(Bullet const &rhs)
+{
+    if (this != &rhs)
+    {
 	_rep = rhs._rep;
 	_dirX = rhs._dirX;
 	_dirY = rhs._dirY;
 	_posY = rhs._posY;
 	_posX = rhs._posX;
+    }
     return (*this);
 }
 
-Bullet::Bullet(const Bullet &obj){
+Bullet::Bullet(const Bullet &obj)
+{
     *this = obj;
 }
 
-Bullet::~Bullet(void){
+Bullet::~Bullet(void)
+{
 }
 
-void        Bullet::checkPos(void) {
-	if (this->getYPos() >= Game::yMax)
-		this->_alive = false;
-	else if (this->getYPos() <= 0)
-		this->_alive = false;
-	if (this->getXPos() >= Game::xMax)
-		this->_alive = false;
-	else if (this->getXPos() <= 0)
-		this->_alive = false;
-}
 
-void		Bullet::move(float x, float y) {
-	/*Satisfy compiler*/
-	_dirY += y;
-	_dirX += x;
-	/*Slowly increase speed.*/
+
+void		Bullet::move(float x, float y)
+{
+	(void)x;
+	(void)y;
+	_dirX += _dirX < 0 ? -.1 : .1;
 	_dirY += _dirY < 0 ? -.1 : .1;
+	_posX += _dirX;
 	_posY += _dirY;
-	checkPos();
 }
 void        Bullet::update() {
 

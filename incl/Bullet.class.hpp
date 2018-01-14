@@ -7,13 +7,12 @@
 class  Bullet : public GameObj {
 
 public:
-    Bullet(void);
-    Bullet(float dirY, float posX, float posY);
-    Bullet &operator=(Bullet const &rhs);
-    Bullet(const Bullet &obj);
-    ~Bullet(void);
+	Bullet(void);
+	Bullet(float dirX, float dirY, float posX, float posY);
+	Bullet &operator=(Bullet const &rhs);
+	Bullet(const Bullet &obj);
+	~Bullet(void);
 
-	void        checkPos(void);
 	void		move(float x, float y);
 	void		update(void);
 
