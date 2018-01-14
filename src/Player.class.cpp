@@ -34,8 +34,16 @@ Player::~Player(void) {
 }
 
 void            Player::move(float dirX, float dirY) {
-    _posX += dirX;
-    _posY += dirY;
+	_posX += dirX;
+	if (_posX < 0)
+		_posX = Game::xMax -1;
+	else if (_posX > Game::xMax)
+		_posX = 0;
+	_posY += dirY;
+	if (_posY < 0)
+		_posY = 0;
+	else if (_posY > Game::yMax)
+		_posY = Game::yMax;
 }
 
 void            Player::update() {
