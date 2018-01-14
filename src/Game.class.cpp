@@ -114,6 +114,8 @@ static bool	objects_will_collide(GameObj *o1, GameObj *o2)
 
 	float det = l1a * l2b - l2a * l1b;
 
+
+	
 	if (det == 0)
 		return (false);
 
@@ -122,8 +124,8 @@ static bool	objects_will_collide(GameObj *o1, GameObj *o2)
 
 	if (isbetween(ix, x1p, x1p + x1d) &&
 	    isbetween(iy, y1p, y1p + y1d) &&
-	    isbetween(ix, x1p, x1p + x1d) &&
-	    isbetween(iy, y1p, y1p + y1d))
+	    isbetween(ix, x2p, x2p + x2d) &&
+	    isbetween(iy, y2p, y2p + y2d))
 	{
 		return (true);
 	}
@@ -143,10 +145,6 @@ void			Game::collision(void)
 			//check to see if objects occupy same space
 			if ( i != j && objects_will_collide(objs[i], objs[j]))
 			{
-				std::cout << i << j << "\n";
-				std::cout << objs[i]->getYDir() << objs[i]->getXDir() << "\n";
-				std::cout << objs[j]->getYDir() << objs[i]->getXDir() << "\n";
-				exit(1);
 				objs[i]->livingStatus(false);
 				objs[j]->livingStatus(false);
 			}
