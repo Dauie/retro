@@ -55,5 +55,6 @@ void		Bullet::move(float x, float y) {
 	checkPos();
 }
 void        Bullet::update() {
+
 	move(0.0, 0.0);
 }

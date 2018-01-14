@@ -25,9 +25,13 @@ Game::Game(void) {
 	for (int i = 0; i < TOTALOBJ; i++) {
 		objs[i] = nullptr;
 	}
+
 	new Player;
 
 	new Spawner(70, 70, 70);
+
+	new StrongEnemy(0, 0.1, 40, 80);
+	
 };
 
 
@@ -76,7 +80,7 @@ void			Game::render() const {
 
 static bool	isbetween(float n, float a, float b)
 {
-	float error = 1.5;
+	float error = 0.5;
 
 	if (n <= a + error && n >= b - error)
 		return (true);

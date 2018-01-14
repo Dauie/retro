@@ -40,6 +40,16 @@ void            Player::move(float dirX, float dirY) {
 
 void            Player::update() {
 
+	if (!_alive)
+	{
+		_lives--;
+		_alive = true;
+	}
+	if (!_lives)
+	{
+		delete this;
+	}
+	
     switch(Game::input) {
         case UP:
             this->setXDir(-1.5);
