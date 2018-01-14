@@ -1,13 +1,9 @@
-//
-// Created by Robert LUTT on 1/12/18.
-//
+
 
 #ifndef PLAYER_CLASS_HPP
 #define PLAYER_CLASS_HPP
 
-#include "Game.class.hpp"
-#include "GameObj.class.hpp"
-#include "Bullet.class.hpp"
+#include "rush00.hpp"
 
 class Player : public GameObj {
 
@@ -19,6 +15,7 @@ public:
 
     void fireBullet(void);
     void update(void);
+	void move(float dirX, float dirY);
 
 private:
     unsigned int    _lives;

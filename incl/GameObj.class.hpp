@@ -1,11 +1,7 @@
 #ifndef GAMEOBJ_CLASS_HPP
 #define GAMEOBJ_CLASS_HPP
 
-#include <iostream>
-#include <string>
-#include <ncurses.h>
-#include <cmath>
-#include "Game.class.hpp"
+#include "rush00.hpp"
 
 #define UP (int)'w'
 #define DOWN (int)'s'
@@ -41,8 +37,8 @@ public:
 
 //other stuff:
 
-	virtual void	update(void) = 0;
-	virtual void	move(float x, float y);
+	virtual void	update(void)=0;
+	virtual void	move(float dirX, float dirY);
 	virtual void	draw(void);
 	
 	

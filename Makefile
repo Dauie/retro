@@ -2,14 +2,14 @@ NAME = ft_retro
 
 CC = clang++
 
-CCFLAGS = -Wall -Werror -Wextra -lncurses -o $(NAME)
+CCFLAGS =   -Wfatal-errors -Wall -Werror -Wextra -lncurses -o $(NAME)
 
-SRC = main.cpp src/GameObj.class.cpp src/Game.class.cpp src/Player.class.cpp src/Bullet.class.cpp
+SRC = main.cpp src/*.cpp
 
 RM = -rm -fr
 
 $(NAME):
-		$(CC) $(CCFLAGS) $(SRC)
+		$(CC) $(CCFLAGS) $(SRC) -I ./incl
 
 clean:
 		$(RM) $(OBJ)

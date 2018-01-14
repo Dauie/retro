@@ -1,9 +1,9 @@
 #ifndef SPAWNER_CLASS_HPP
 #define SPAWNER_CLASS_HPP
 
-#include "GameObj.class.hpp"
+#include "rush00.hpp"
 
-class	Spawner : pubic GameObj {
+class	Spawner : public GameObj {
 
 private:
 
@@ -20,8 +20,7 @@ public:
 	void	update(void);
 
 //overloads:
-
-	Spawner	&operator=(Spawner const *obj);
-}
+	Spawner	&operator=(Spawner const &obj);
+};
 
 #endif

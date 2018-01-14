@@ -1,7 +1,7 @@
 #ifndef BASICENEMY_CLASS_HPP
 #define BASICENEMY_CLASS_HPP
 
-#include "GameObj.class.hpp"
+#include "rush00.hpp"
 
 class	BasicEnemy : public GameObj {
 
@@ -16,8 +16,8 @@ public:
 	
 //overloads:
 
-	BasicEnemy	&operator=(BasicEnemy const *obj);
+	BasicEnemy	&operator=(BasicEnemy const &obj);
 	
-}
+};
 
 #endif

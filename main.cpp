@@ -1,7 +1,4 @@
-#include "incl/GameObj.class.hpp"
-#include "incl/Game.class.hpp"
-#include <ncurses.h>
-#include <unistd.h>
+#include "rush00.hpp"
 
 #define DELAY 30000
 
@@ -16,6 +13,8 @@ int main(void) {
         main.update();
         /*Clear the Screen*/
         clear();
+		/*Check for collisions*/
+		main.collision();
         /*Draw all game entities*/
         main.render();
         /*Display the new screen*/

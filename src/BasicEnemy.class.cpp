@@ -1,5 +1,5 @@
 
-#include "BasicEnemy.class.hpp"
+#include "rush00.hpp"
 
 BasicEnemy::BasicEnemy(void)
 {
@@ -31,17 +31,17 @@ BasicEnemy::~BasicEnemy(void)
 {
 }
 
-void	update(void)
+void	BasicEnemy::update(void)
 {
-	if (!this->isAlive())
+	if (!_alive)
 	{
-		delete self;
+		delete this;
 	}
-	this->move();
+	this->move(0.0, 0.0);
 	this->draw();
 }
 
-BasicEnemy	&BasicEnemy::operator=(BasicEnemy const *obj)
+BasicEnemy	&BasicEnemy::operator=(BasicEnemy const &obj)
 {
 	if (this != &obj)
 	{

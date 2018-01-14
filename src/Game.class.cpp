@@ -1,15 +1,14 @@
-//
-// Created by Robert LUTT on 1/11/18.
-//
 
-#include "../incl/Game.class.hpp"
 
-GameObj Game::objs = new GameObj*[TOTALOBJ];
+#include "rush00.hpp"
+
+GameObj** Game::objs = new GameObj*[TOTALOBJ];
+
 unsigned int Game::yMax = 0;
 unsigned int Game::xMax = 0;
-unsigned int Game::input = 0;
+int Game::input = 0;
 
-Game::Game(void) : _xMax(0), _yMax(0) {
+Game::Game(void) {
     initscr();
     timeout(0);
     curs_set(0);
@@ -43,12 +42,13 @@ Game::Game(const Game &obj) {
 Game::~Game(void) {
 
     /*Delete Game Entities*/
-	for (int i = 0; i < TOTALOBJ; i++) {
-		delete objs[i];
-		objs[i] = nullptr;
-	}
-	delete Game::objs;
+	delete[] Game::objs;
     endwin();
+}
+
+int				Game::setInput(int c) {
+	input = c;
+	return (1);
 }
 
 clock_t			Game::getGameStart() const { return (_gameStart); }
@@ -56,12 +56,42 @@ clock_t			Game::getGameStart() const { return (_gameStart); }
 
 void			Game::update() {
 	for (int i = 0; i < TOTALOBJ; i++) {
-		objs[i]->update();
+		if (objs[i]) {
+			objs[i]->update();
+		}
 	}
 }
-
 void			Game::render() const {
     for (int i = 0; i < TOTALOBJ; i++) {
-        objs[i]->draw();
+		if (objs[i]) {
+        	objs[i]->draw();
+		}
     }
+}
+
+void			Game::collision(void){
+	for (int i = 0; i < TOTALOBJ; i++ ){
+		if (!objs[i])
+			continue;
+		int pxi = roundf(objs[i]->getXPos());
+		int pyi = roundf(objs[i]->getYPos());
+		for (int j = 0; j < TOTALOBJ; j++){
+			if (!objs[j])
+				continue;
+			int pxj = roundf(objs[j]->getXPos());
+			int pyj = roundf(objs[j]->getYPos());
+
+			//check to see if objects occupy same space
+			if (pxi == pxj && pyi == pyj)
+				objs[i]->livingStatus(false);
+			objs[j]->livingStatus(false);
+		}
+		//check to see if objects are out of bounds
+		if (i > 0 &&
+			(pyi >= (int)Game::yMax || pyi <= 0 ||
+					pxi >= (int)Game::xMax || pxi <= 0))
+		{
+			objs[i]->livingStatus(false);
+		}
+	}
 }

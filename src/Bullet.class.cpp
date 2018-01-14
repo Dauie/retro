@@ -1,10 +1,9 @@
 //
 // Created by Robert LUTT on 1/12/18.
 //
-#include "../incl/Bullet.class.hpp"
+#include "rush00.hpp"
 
-Bullet::Bullet(void) : GameObj(), _alive(TRUE), _dirX(0.0),
-                       _dirY(0.0), _posY(0.0), _posX(0.0){
+Bullet::Bullet(void) : GameObj() {
 
 }
 

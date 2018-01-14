@@ -1,9 +1,9 @@
 
-#include "GameObj.class.hpp"
+#include "rush00.hpp"
 
 GameObj::GameObj(void)
 {
-	for (int i = 0; i < TOTALOBJS; i++)
+	for (int i = 0; i < TOTALOBJ; i++)
 	{
 		if (!Game::objs[i])
 		{
@@ -39,7 +39,7 @@ GameObj::~GameObj(void)
 
 float	GameObj::getXDir(void) const { return (_dirX); }
 float	GameObj::getYDir(void) const { return (_dirY); }
-float	GameObj::getXPos(void) const { return (_poxX); }
+float	GameObj::getXPos(void) const { return (_posX); }
 float	GameObj::getYPos(void) const { return (_posY); }
 
 void	GameObj::setXDir(float f) { _dirX = f; }
@@ -55,10 +55,12 @@ void	GameObj::setRep(char c) { _rep = c; }
 
 //other stuff:
 
-void	GameObj::move(void)
+void	GameObj::move(float dirX, float dirY)
 {
+	(void)dirX;
+	(void)dirY;
 	_posX += _dirX;
-	_posY += dirY;
+	_posY += _dirY;
 }
 
 void	GameObj::draw(void)

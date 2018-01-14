@@ -1,5 +1,5 @@
 
-#include "Spawner.class.hpp"
+#include "rush00.hpp"
 
 Spawner::Spawner(void)
 {
@@ -33,7 +33,7 @@ Spawner::~Spawner(void)
 {
 }
 
-void	update(void)
+void	Spawner::update(void)
 {
 	if (!this->isAlive())
 	{
@@ -42,15 +42,16 @@ void	update(void)
 
 	if (_curModCycle % _cyclesPerSpawn == 0)
 	{
-		new BasicEnemy e(-1, 0, _posX - 1, _posY);
+		BasicEnemy *e = new BasicEnemy(-1, 0, _posX - 1, _posY);
+		(void)e;
 	}
 	_curModCycle++;
 
-	this->move();
+	this->move(0.0, 0.0);
 	this->draw();
 }
 
-Spawner	&Spawner::operator=(BasicEnemy const *obj)
+Spawner	&Spawner::operator=(Spawner const &obj)
 {
 	if (this != &obj)
 	{

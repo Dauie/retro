@@ -1,10 +1,14 @@
 
-#include "../incl/Player.class.hpp"
+#include "rush00.hpp"
 
-Player::Player(void) :
-        GameObj(), _lives(3), _alive(TRUE), _rep('>'),
-        _posY(1), _posX(1), _dirX(0), _dirY(0) {
-
+Player::Player(void) : GameObj() {
+	_lives = 3;
+	_alive = true;
+	_rep = '>';
+	_posY = 1;
+	_posX = 1;
+	_dirX = 0;
+	_dirY = 0;
 }
 
 Player &Player::operator=(Player const &rhs) {
@@ -41,9 +45,9 @@ void            Player::move(float dirX, float dirY) {
 	_dirY -= _dirY > 0.0 ? 0.5 : 0.0;
 }
 
-void            Player::update(int input, GameObj **objs, int len) {
+void            Player::update() {
 
-    switch(input) {
+    switch(Game::input) {
         case UP:
             this->move(-1.0, 0.0);
             break;
