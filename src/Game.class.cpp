@@ -142,6 +142,10 @@ void			Game::collision(void)
 			//check to see if objects occupy same space
 			if ( i != j && objects_will_collide(objs[i], objs[j]))
 			{
+				std::cout << i << j << "\n";
+				std::cout << objs[i]->getYDir() << objs[i]->getXDir() << "\n";
+				std::cout << objs[j]->getYDir() << objs[i]->getXDir() << "\n";
+				exit(1);
 				objs[i]->livingStatus(false);
 				objs[j]->livingStatus(false);
 			}
