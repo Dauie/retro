@@ -3,13 +3,12 @@
 
 StrongEnemy::StrongEnemy(void)
 {
-	_rep = 'X';
-	_alive = true;
 }
 
 StrongEnemy::StrongEnemy(const StrongEnemy &obj)
 {
 	_rep = obj._rep;
+	_color = obj._color;
 	_alive = obj._alive;
 	_dirX = obj._dirX;
 	_dirY = obj._dirY;
@@ -24,6 +23,7 @@ StrongEnemy::StrongEnemy(const StrongEnemy &obj)
 StrongEnemy::StrongEnemy(float dirX, float dirY, float posX, float posY)
 {
 	_rep = 'X';
+	_color = COLOR_RED;
 	_alive = true;
 	_dirX = dirX;
 	_dirY = dirY;
@@ -84,6 +84,7 @@ StrongEnemy	&StrongEnemy::operator=(StrongEnemy const &obj)
 	if (this != &obj)
 	{
 		this->_rep = obj._rep;
+		this->_color = obj._color;
 		this->_alive = obj._alive;
 		this->_dirX = obj._dirX;
 		this->_dirY = obj._dirY;

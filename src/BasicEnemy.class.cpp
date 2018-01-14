@@ -3,13 +3,12 @@
 
 BasicEnemy::BasicEnemy(void)
 {
-	_rep = 'E';
-	_alive = true;
 }
 
 BasicEnemy::BasicEnemy(const BasicEnemy &obj)
 {
 	_rep = obj._rep;
+	_color = obj._color;
 	_alive = obj._alive;
 	_dirX = obj._dirX;
 	_dirY = obj._dirY;
@@ -20,6 +19,7 @@ BasicEnemy::BasicEnemy(const BasicEnemy &obj)
 BasicEnemy::BasicEnemy(float dirX, float dirY, float posX, float posY)
 {
 	_rep = 'E';
+	_color  = COLOR_RED;
 	_alive = true;
 	_dirX = dirX;
 	_dirY = dirY;
@@ -29,17 +29,9 @@ BasicEnemy::BasicEnemy(float dirX, float dirY, float posX, float posY)
 
 BasicEnemy::~BasicEnemy(void)
 {
-	new Particle(_posX, _posY);
-	new Particle(_posX, _posY);
-	new Particle(_posX, _posY);
-	new Particle(_posX, _posY);
-	new Particle(_posX, _posY);
-	new Particle(_posX, _posY);
-	new Particle(_posX, _posY);
-	new Particle(_posX, _posY);
-	new Particle(_posX, _posY);
-	new Particle(_posX, _posY);
-
+	for (int i = 0; i < 10; i++) {
+		new Particle(_posX, _posY);
+	}
 }
 
 void	BasicEnemy::update(void)

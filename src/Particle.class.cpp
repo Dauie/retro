@@ -10,12 +10,13 @@ Particle::Particle(void) {
 
 Particle::Particle(float posX, float posY) : GameObj(1) {
 	_rep = '.';
+	_color = COLOR_GREEN;
 	_alive = true;
-	_dirY = rand()%2 == 1 ? (float)(rand() % 3) * -1 : (float)(rand() % 3);
-	_dirX = rand()%2 == 1 ? (float)(rand() % 3) * -1 : (float)(rand() % 3);
+	_dirY = rand()%2 == 1 ? (float)(rand() % 3) * 1 : (float)(rand() % 3) * .1;
+	_dirX = rand()%2 == 1 ? (float)(rand() % 3) * 1 : (float)(rand() % 3) * .1;
 	_posX = posX;
 	_posY = posY;
-	_ttl = 4;
+	_ttl = 16;
 	for (int i = COLLIDABLE; i < TOTALOBJ; i++)
 	{
 		if (!Game::objs[i])
@@ -29,6 +30,7 @@ Particle::Particle(float posX, float posY) : GameObj(1) {
 
 Particle::Particle(const Particle &obj) {
 	_rep = obj._rep;
+	_color = obj._color;
 	_alive = obj._alive;
 	_dirX = obj._dirX;
 	_dirY = obj._dirY;
@@ -52,6 +54,7 @@ Particle	&Particle::operator=(Particle const &obj)
 	if (this != &obj)
 	{
 		this->_rep = obj._rep;
+		this->_color = obj._color;
 		this->_alive = obj._alive;
 		this->_dirX = obj._dirX;
 		this->_dirY = obj._dirY;
@@ -78,6 +81,8 @@ void	Particle::move(float x, float y) {
 }
 
 void	Particle::update(void) {
+	if (!_alive)
+		delete this;
 	_ttl -= 1;
 	this->move(0.0, 0.0);
 	if (_ttl == 0)

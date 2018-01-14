@@ -5,6 +5,7 @@ Player::Player(void) : GameObj() {
 	_lives = 3;
 	_alive = true;
 	_rep = '>';
+	_color = COLOR_CYAN;
 	_posY = 1;
 	_posX = 1;
 	_dirX = 0;
@@ -15,9 +16,9 @@ Player &Player::operator=(Player const &rhs) {
     if (this != &rhs) {
         return (*this);
     }
-    _rep = rhs.getRep();
-    _alive = rhs.isAlive();
-
+    _rep = rhs._rep;
+	_color = rhs._color;
+    _alive = rhs._alive;
     _dirX = rhs._dirX;
     _dirY = rhs._dirY;
     _posY = rhs._posY;

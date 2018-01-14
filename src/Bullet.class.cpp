@@ -10,6 +10,7 @@ Bullet::Bullet(void) : GameObj()
 Bullet::Bullet(float dirX, float dirY, float posX, float posY)
 {
 	_rep = '-';
+	_color = COLOR_YELLOW;
 	_dirX = dirX;
 	_dirY = dirY;
 	_posX = posX;
@@ -19,13 +20,13 @@ Bullet::Bullet(float dirX, float dirY, float posX, float posY)
 
 Bullet &Bullet::operator=(Bullet const &rhs)
 {
-    if (this != &rhs)
-    {
-	_rep = rhs._rep;
-	_dirX = rhs._dirX;
-	_dirY = rhs._dirY;
-	_posY = rhs._posY;
-	_posX = rhs._posX;
+    if (this != &rhs) {
+		_rep = rhs._rep;
+		_color = rhs._color;
+		_dirX = rhs._dirX;
+		_dirY = rhs._dirY;
+		_posY = rhs._posY;
+		_posX = rhs._posX;
     }
     return (*this);
 }

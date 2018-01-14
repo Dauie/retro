@@ -49,12 +49,13 @@ public:
 
 protected:
 
-	char _rep;
-	bool _alive;
-	float _dirX;
-	float _dirY;
-	float _posX;
-	float _posY;	
+	char 	_rep;
+	int		_color;
+	bool 	_alive;
+	float 	_dirX;
+	float 	_dirY;
+	float 	_posX;
+	float 	_posY;
 
 };
 

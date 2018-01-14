@@ -18,6 +18,12 @@ Game::Game(void) {
     nodelay(stdscr, TRUE);
     getmaxyx(stdscr, xMax, yMax);
 	std::srand(time(NULL));
+	if(has_colors() == FALSE)
+	{	endwin();
+		printf("Your terminal does not support color\n");
+		exit(1);
+	}
+	start_color();
     _gameStart = clock();
     _lastRender = 0;
 

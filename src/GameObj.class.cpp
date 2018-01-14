@@ -19,6 +19,7 @@ GameObj::GameObj(int)
 GameObj::GameObj(const GameObj &obj)
 {
 	_rep = obj._rep;
+	_color = obj._color;
 	_alive = obj._alive;
 	_dirX = obj._dirX;
 	_dirY = obj._dirY;
@@ -71,8 +72,10 @@ void	GameObj::draw(void)
 {
 	int x = roundf(_posX);
 	int y = roundf(_posY);
-
+	init_pair(1, _color, COLOR_BLACK);
+	attron(COLOR_PAIR(1));
 	mvprintw(x, y, "%c", _rep);
+	attroff(COLOR_PAIR(1));
 }
 
 //overloads:
@@ -82,6 +85,7 @@ GameObj	&GameObj::operator=(GameObj const &obj)
 	if (this != &obj)
 	{
 		this->_rep = obj._rep;
+		this->_color = obj._color;
 		this->_alive = obj._alive;
 		this->_dirX = obj._dirX;
 		this->_dirY = obj._dirY;
