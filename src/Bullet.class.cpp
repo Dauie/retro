@@ -45,7 +45,7 @@ void		Bullet::move(float x, float y)
 {
 	(void)x;
 	(void)y;
-	_dirX += _dirX < 0 ? -.1 : .1;
+	_dirX += _dirX ;
 	_dirY += _dirY < 0 ? -.1 : .1;
 	_posX += _dirX;
 	_posY += _dirY;
