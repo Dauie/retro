@@ -48,6 +48,16 @@ void            Player::move(float dirX, float dirY) {
 
 void            Player::update() {
 
+	if (!_alive)
+	{
+		_lives--;
+		_alive = true;
+	}
+	if (!_lives)
+	{
+		delete this;
+	}
+	
     switch(Game::input) {
         case UP:
             this->setXDir(-1.5);
@@ -74,5 +84,5 @@ void            Player::update() {
 }
 
 void        Player::fireBullet() {
-	new Bullet(1.0, _posX, _posY + 1.0);
+	new Bullet(0.0, 1.0, _posX, _posY + 1.0);
 }

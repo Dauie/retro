@@ -19,8 +19,6 @@ public:
     void                    render(void) const;
     unsigned int            getFps(void) const;
     clock_t                 getGameStart() const;
-	clock_t					getProcStart() const;
-	void					setProcStart(clock_t start);
 	void					collision();
 	int						setInput(int c);
 

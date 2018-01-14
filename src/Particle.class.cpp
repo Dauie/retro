@@ -73,8 +73,8 @@ void	Particle::move(float x, float y) {
 	(void)x;
 	(void)y;
 
-	_posX += _dirX;
-	_posY += _dirY;
+	_posX += _dirX * .1;
+	_posY += _dirY * .1;
 }
 
 void	Particle::update(void) {
