@@ -133,7 +133,7 @@ void Game::GameOver() const{
 		refresh();
 		;
 	refresh();
-	sleep(10);
+	sleep(3);
 	exit(0);
 }
 
@@ -146,11 +146,14 @@ void	Game::scoreboard(GameObj *p) const{
 	attron(COLOR_PAIR(3));
 	for (int i = 1; i < (int)yMax - 1; i++) {
 		mvaddch(2,i,ACS_HLINE); }
-	w = (yMax / 4) - 1;
+	w = (yMax / 8) - 1;
 	mvprintw(1,1,"%*s:%-*d",w,"Lives",w,l);
 	addch(ACS_VLINE);
 	printw("%*s:%-*d",w,"Score",w,score);
 	addch(ACS_VLINE);
+	printw("%*s:%-*d",w,"FPS",w,60);
+	addch(ACS_VLINE);
+	printw("%*s:%-*f",w,"TIME",w,((float)((clock()-_gameStart)/1000000.0)));
 	mvaddch(2,0,ACS_LTEE);
 	mvaddch(2,yMax - 1,ACS_RTEE);
 	mvaddch(0,2*w+2,ACS_TTEE);

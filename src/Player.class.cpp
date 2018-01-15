@@ -48,7 +48,6 @@ void            Player::move(float dirX, float dirY) {
 	else if (_posY > Game::yMax)
 		_posY = Game::yMax;
 }
-
 void            Player::update() {
 
 	if (!_alive)
@@ -57,7 +56,7 @@ void            Player::update() {
 		_lives--;
 		_alive = true;
 	}
-	if (!_lives)
+	if (_lives <=0)
 	{
 		std::system("afplay ./sounds/explosion.mp3 &");
 		for (int i = 0; i < 16; i++) {
@@ -99,6 +98,8 @@ int     Player::getLives() const {
 
 void        Player::fireBullet() {
 	std::system("afplay ./sounds/gunFirePlayer.mp3 &");
-	float d = (float)(rand() % 100 - 50) / 3000;
+	float d = 0;
+	if (Game::score > 2000)
+		d = (float)(rand() % 100 - 50) / 3000;
 	new Bullet(d, 1.0, _posX, _posY + 1.0, true);
 }
