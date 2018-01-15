@@ -37,6 +37,7 @@ Game::Game(void) {
 	init_pair(5, COLOR_MAGENTA, COLOR_BLACK);
 	init_pair(6, COLOR_CYAN, COLOR_BLACK);
 	init_pair(7, COLOR_WHITE, COLOR_BLACK);
+	init_pair(8, COLOR_RED, COLOR_RED);
 	std::srand(time(NULL));
 	if(has_colors() == FALSE)
 	{

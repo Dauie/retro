@@ -53,6 +53,16 @@ void            Player::update() {
 
 	if (!_alive)
 	{
+		attron(COLOR_PAIR(8));
+		for (int i = 0; i < (int)Game::xMax; i++) {
+			for (int j = 0; j < (int)Game::yMax; j++){
+				mvprintw(i, j, "%c", '|');
+			}
+		}
+		refresh();
+		usleep(30000);
+
+		attroff(COLOR_PAIR(8));
 		std::system("afplay ./sounds/lifereduce.mp3 &");
 		_lives--;
 		_alive = true;
