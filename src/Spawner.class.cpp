@@ -17,6 +17,7 @@ Spawner::Spawner(const Spawner &obj)
 	_cyclesPerSpawn = obj._cyclesPerSpawn;
 	_curModCycle = obj._curModCycle;
 	_angle = obj._angle;
+	_wall = obj._wall;
 }
 
 Spawner::Spawner(float posX, float posY, int cyclesPerSpawn, int sync, float reverse)
@@ -31,6 +32,7 @@ Spawner::Spawner(float posX, float posY, int cyclesPerSpawn, int sync, float rev
 	_cyclesPerSpawn = cyclesPerSpawn;
 	_curModCycle = sync + 1;
 	_angle = 0;
+	_wall = true;
 }
 
 Spawner::~Spawner(void)
@@ -76,6 +78,7 @@ Spawner	&Spawner::operator=(Spawner const &obj)
 		this->_dirY = obj._dirY;
 		this->_posX = obj._posX;
 		this->_posY = obj._posY;
+		this->_wall = obj._wall;
 	}
 	return (*this);
 }

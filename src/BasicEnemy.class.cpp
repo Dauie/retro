@@ -14,6 +14,7 @@ BasicEnemy::BasicEnemy(const BasicEnemy &obj)
 	_dirY = obj._dirY;
 	_posX = obj._posX;
 	_posY = obj._posY;
+	_wall = obj._wall;
 }
 
 BasicEnemy::BasicEnemy(float dirX, float dirY, float posX, float posY)
@@ -25,6 +26,7 @@ BasicEnemy::BasicEnemy(float dirX, float dirY, float posX, float posY)
 	_dirY = dirY;
 	_posX = posX;
 	_posY = posY;
+	_wall= false;
 }
 
 BasicEnemy::~BasicEnemy(void)
@@ -39,6 +41,11 @@ void	BasicEnemy::update(void)
 {
 	if (!_alive)
 	{
+		if (!_wall) {
+			for (int i = 0; i < 10; i++) {
+				new Particle(_posX, _posY);
+			}
+		}
 		delete this;
 		return;
 	}
@@ -56,6 +63,7 @@ BasicEnemy	&BasicEnemy::operator=(BasicEnemy const &obj)
 		this->_dirY = obj._dirY;
 		this->_posX = obj._posX;
 		this->_posY = obj._posY;
+		this->_wall = obj._wall;
 	}
 	return (*this);
 }

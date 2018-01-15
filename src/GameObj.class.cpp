@@ -25,6 +25,7 @@ GameObj::GameObj(const GameObj &obj)
 	_dirY = obj._dirY;
 	_posX = obj._posX;
 	_posY = obj._posY;
+	_wall = obj._wall;
 }
 
 GameObj::~GameObj(void)
@@ -52,9 +53,10 @@ void	GameObj::setYDir(float f) { _dirY = f; }
 void	GameObj::setXPos(float f) { _posX = f; }
 void	GameObj::setYPos(float f) { _posY = f; }
 
-
+bool	GameObj::getWall(void) const {return (_wall);}
 bool	GameObj::isAlive(void) const { return (_alive); }
 void	GameObj::livingStatus(bool b) { _alive = b; }
+void	GameObj::hitWall(bool b)	{_wall=b;}
 
 char	GameObj::getRep(void) const { return (_rep); }
 void	GameObj::setRep(char c) { _rep = c; }
@@ -91,6 +93,7 @@ GameObj	&GameObj::operator=(GameObj const &obj)
 		this->_dirY = obj._dirY;
 		this->_posX = obj._posX;
 		this->_posY = obj._posY;
+		this->_wall = obj._wall;
 	}
 	return (*this);
 }

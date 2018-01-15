@@ -10,6 +10,7 @@ Player::Player(void) : GameObj() {
 	_posX = 1;
 	_dirX = 0;
 	_dirY = 0;
+	_wall = false;
 }
 
 Player &Player::operator=(Player const &rhs) {
@@ -23,6 +24,7 @@ Player &Player::operator=(Player const &rhs) {
     _dirY = rhs._dirY;
     _posY = rhs._posY;
     _posX = rhs._posX;
+    _wall = rhs._wall;
     return (*this);
 }
 

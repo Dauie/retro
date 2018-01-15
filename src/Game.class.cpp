@@ -124,7 +124,7 @@ void	Game::drawBorder(void) const{
 
 void Game::GameOver() const{
 
-	attron(COLOR_PAIR(2));
+	attron(COLOR_PAIR(5));
 	mvprintw((xMax/2)-15,(yMax/2)-10,"%s","GAME OVER");
 	sleep (3);
 	doupdate();
@@ -244,6 +244,8 @@ void			Game::collision(void)
 			{
 				objs[i]->livingStatus(false);
 				objs[j]->livingStatus(false);
+				if (objs[i]->getWall()!=objs[j]->getWall())
+					score++;
 			}
 		}
 		//check to see if objects are out of bounds
@@ -254,6 +256,7 @@ void			Game::collision(void)
 		     objs[i]->getXPos()<= 0))
 		{
 			objs[i]->livingStatus(false);
+			objs[i]->hitWall(true);
 		}
 	}
 }
