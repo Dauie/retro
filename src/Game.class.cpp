@@ -7,7 +7,7 @@ GameObj** Game::objs = new GameObj*[TOTALOBJ];
 unsigned int Game::yMax = 0;
 unsigned int Game::xMax = 0;
 int Game::input = 0;
-int Game::score =0;
+int Game::score = 0;
 
 Game::Game(void) {
     initscr();

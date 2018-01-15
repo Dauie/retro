@@ -13,6 +13,7 @@
 #include "Background.class.hpp"
 
 
+
 #include <ncurses.h>
 #include <unistd.h>
 #include <ctype.h>
@@ -21,5 +22,8 @@
 #include <string>
 #include <cstring>
 #include <sys/time.h>
+#include <CoreFoundation/CoreFoundation.h>
+
+
 
 #endif
