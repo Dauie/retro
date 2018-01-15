@@ -9,6 +9,7 @@ class  Bullet : public GameObj {
 public:
 	Bullet(void);
 	Bullet(float dirX, float dirY, float posX, float posY, bool accel);
+	Bullet(float dirX, float dirY, float posX, float posY, bool accel, bool wall);
 	Bullet &operator=(Bullet const &rhs);
 	Bullet(const Bullet &obj);
 	~Bullet(void);

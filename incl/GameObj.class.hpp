@@ -32,6 +32,8 @@ public:
 
 	bool	isAlive(void) const;
 	void	livingStatus(bool);
+	void	hitWall(bool);
+	bool	getWall(void) const;
 
 	char	getRep(void) const;
 	void	setRep(char);
@@ -48,7 +50,7 @@ public:
 	GameObj	&operator=(GameObj const &obj);
 
 protected:
-
+	bool	_wall;
 	char 	_rep;
 	int		_color;
 	bool 	_alive;
