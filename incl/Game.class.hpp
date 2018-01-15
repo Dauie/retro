@@ -23,6 +23,7 @@ public:
 	int						setInput(int c);
     void                    drawBorder(void) const;
     void                    scoreboard(GameObj *p) const;
+//	void					updateLeaderBoard(void) const;
     void                    GameOver() const;
 
 	static unsigned int    xMax;

@@ -63,7 +63,8 @@ void            Player::update() {
 
 		attroff(COLOR_PAIR(8));
 		std::system("afplay ./sounds/lifereduce.mp3 &");
-		_lives--;
+		if (_lives > 0)
+			_lives--;
 		_alive = true;
 	}
 	if (_lives <=0)

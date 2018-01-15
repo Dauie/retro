@@ -2,6 +2,7 @@
 
 #include "rush00.hpp"
 
+
 GameObj** Game::objs = new GameObj*[TOTALOBJ];
 
 unsigned int Game::yMax = 0;
@@ -123,7 +124,41 @@ void	Game::drawBorder(void) const{
 	attroff(COLOR_PAIR(3));
 }
 
+//void Game::updateLeaderBoard(void) const{
+//
+//	std::stringstream logmsg;
+//	char msg[] = "Please enter initials:";
+//	char res[32];
+//	std::string ret;
+//
+//	attron(COLOR_PAIR(5));
+//	clear();
+//	mvprintw(Game::yMax / 2, Game::xMax / 2,"%s", msg);
+//	refresh();
+//	sleep(1);
+//	getstr(res);
+//	logmsg << res << " " << Game::score;
+//	ret = logmsg.str();
+//	mvprintw(Game::yMax / 2, (Game::xMax / 2) - 2,"%s", res);
+//	mvprintw(Game::yMax / 2, (Game::xMax / 2) - 4,"%d", Game::score);
+//	refresh();
+//	time_t time = std::time(0);
+//	struct tm * now = localtime(&time);
+//	std::string stime = std::to_string(now->tm_year + 1900) + "_"
+//						+ std::to_string(now->tm_mon + 1) + "_" +
+//						std::to_string(now->tm_mday) + "_" + std::to_string(now->tm_hour) +
+//						":" + std::to_string(now->tm_min);
+//	 ret = stime + "\n\tmessage: " + ret + "\n";
+//
+//	std::ofstream out;
+//
+//	out.open("LeaderBoard.log", std::ios::out | std::ios::app );
+//	out << ret;
+//	out.close();
+//}
+
 void Game::GameOver() const{
+
 
 	attron(COLOR_PAIR(5));
 	mvprintw((xMax/2)-15,(yMax/2)-10,"%s","GAME OVER");
@@ -132,6 +167,7 @@ void Game::GameOver() const{
 	sleep(5);
 	while (getch() == ERR)
 		;
+//	Game::updateLeaderBoard();
 	this->~Game();
 	exit(0);
 }
