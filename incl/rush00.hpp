@@ -11,7 +11,7 @@
 #include "Particle.class.hpp"
 #include "StrongEnemy.class.hpp"
 #include "Background.class.hpp"
-
+#include "Immortal.class.hpp"
 
 
 #include <ncurses.h>

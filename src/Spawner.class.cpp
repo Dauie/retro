@@ -49,7 +49,7 @@ void	Spawner::update(void)
 
 	if (_curModCycle % (_cyclesPerSpawn * 20) == 0)
 	{
-//		new Immortal(0, -0.5, _posX, _posY);
+		new Immortal(_reverse * 4, -2, _posX, _posY - 5);
 		_cyclesPerSpawn = (int)((float)_cyclesPerSpawn * 0.8) + 1;
 	}
 	else if (_curModCycle % (_cyclesPerSpawn * 5) == 0)
