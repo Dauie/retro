@@ -6,8 +6,8 @@ Player::Player(void) : GameObj() {
 	_alive = true;
 	_rep = '>';
 	_color = COLOR_CYAN;
-	_posY = 1;
-	_posX = 1;
+	_posY = Game::yMax/2;
+	_posX = Game::xMax/2;
 	_dirX = 0;
 	_dirY = 0;
 	_wall = false;
@@ -38,15 +38,15 @@ Player::~Player(void) {
 
 void            Player::move(float dirX, float dirY) {
 	_posX += dirX;
-	if (_posX < 0)
-		_posX = Game::xMax -1;
+	if (_posX < 1)
+		_posX = Game::xMax -2;
 	else if (_posX > Game::xMax)
-		_posX = 0;
+		_posX = 2;
 	_posY += dirY;
 	if (_posY < 0)
 		_posY = 0;
-	else if (_posY > Game::yMax)
-		_posY = Game::yMax;
+	else if (_posY > Game::yMax-1)
+		_posY = Game::yMax-1;
 }
 void            Player::update() {
 
