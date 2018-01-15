@@ -31,10 +31,7 @@ BasicEnemy::BasicEnemy(float dirX, float dirY, float posX, float posY)
 
 BasicEnemy::~BasicEnemy(void)
 {
-	std::system("afplay ./sounds/explosion.mp3 &");
-	for (int i = 0; i < 10; i++) {
-		new Particle(_posX, _posY);
-	}
+
 }
 
 void	BasicEnemy::update(void)
@@ -42,6 +39,7 @@ void	BasicEnemy::update(void)
 	if (!_alive)
 	{
 		if (!_wall) {
+			std::system("afplay ./sounds/explosion.mp3 &");
 			for (int i = 0; i < 10; i++) {
 				new Particle(_posX, _posY);
 			}
