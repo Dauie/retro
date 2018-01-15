@@ -99,5 +99,6 @@ int     Player::getLives() const {
 
 void        Player::fireBullet() {
 	std::system("afplay ./sounds/gunFirePlayer.mp3 &");
-	new Bullet(0.0, 1.0, _posX, _posY + 1.0, true);
+	float d = (float)(rand() % 100 - 50) / 3000;
+	new Bullet(d, 1.0, _posX, _posY + 1.0, true);
 }

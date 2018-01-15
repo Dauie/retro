@@ -10,7 +10,7 @@ Bullet::Bullet(void) : GameObj()
 Bullet::Bullet(float dirX, float dirY, float posX, float posY, bool accel, bool wall)
 {
 	//enemy bullets
-	_rep = 'O';
+	_rep = '-';
 	_color = COLOR_YELLOW;
 	_dirX = dirX;
 	_dirY = dirY;
@@ -23,7 +23,7 @@ Bullet::Bullet(float dirX, float dirY, float posX, float posY, bool accel, bool 
 
 Bullet::Bullet(float dirX, float dirY, float posX, float posY, bool accel)
 {
-	_rep = '-';
+	_rep = '=';
 	_color = COLOR_YELLOW;
 	_dirX = dirX;
 	_dirY = dirY;
@@ -70,9 +70,9 @@ void		Bullet::move(float x, float y)
 	if (_accel)
 	{
 		if (_dirX)
-			_dirX += _dirX < 0 ? -.1 : .1;
+			_dirX += _dirX * 0.1;
 		if (_dirY)
-			_dirY += _dirY < 0 ? -.1 : .1;
+			_dirY += _dirY * 0.1;
 	}
 	_posX += _dirX;
 	_posY += _dirY;
