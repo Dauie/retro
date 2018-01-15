@@ -32,11 +32,19 @@ Spawner::Spawner(float posX, float posY, int cyclesPerSpawn, int sync, float rev
 	_cyclesPerSpawn = cyclesPerSpawn;
 	_curModCycle = sync + 1;
 	_angle = 0;
-	_wall = true;
+	_wall = false;
 }
 
 Spawner::~Spawner(void)
 {
+}
+
+static void	bullet_storm(void)
+{
+	for (int i = 0; i < (int)Game::xMax; i++)
+	{
+		new Bullet(0, 1, float(i), 0, false);
+	}
 }
 
 void	Spawner::update(void)
@@ -47,8 +55,11 @@ void	Spawner::update(void)
 		//do nothing, it can't die!
 	}
 
-	if (_curModCycle % (_cyclesPerSpawn * 20) == 0)
+	if (Immortal::active)
+		;
+	else if (_curModCycle % (_cyclesPerSpawn * 20) == 0)
 	{
+		bullet_storm();
 		new Immortal(_reverse * 4, -2, _posX, _posY - 5);
 		_cyclesPerSpawn = (int)((float)_cyclesPerSpawn * 0.8) + 1;
 	}
@@ -61,8 +72,9 @@ void	Spawner::update(void)
 		new BasicEnemy(fabs(sinf(_angle * M_PI / 8)) * _reverse, -0.5, _posX, _posY - 5);
 		_angle++;
 	}
-	
-	_curModCycle++;
+
+	if (!Immortal::active)
+		_curModCycle++;
 
 	this->move(0.0, 0.0);
 	this->draw();
