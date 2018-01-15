@@ -9,6 +9,16 @@ unsigned int Game::xMax = 0;
 int Game::input = 0;
 int Game::score = 0;
 
+static void	create_game_setup(void)
+{
+	new Player;
+
+	new Spawner(0.9 * (float)Game::xMax, Game::yMax, 70, 0, -0.2);
+	new Spawner(0.7 * (float)Game::xMax, Game::yMax, 70, 10, -0.2);
+	new Spawner(0.5 * (float)Game::xMax, Game::yMax, 70, 20, 0.2);
+	new Spawner(0.3 * (float)Game::xMax, Game::yMax, 70, 30, 0.2);
+}
+
 Game::Game(void) {
     initscr();
     timeout(0);
@@ -43,14 +53,9 @@ Game::Game(void) {
 	for (int i = 0; i < TOTALOBJ; i++) {
 		objs[i] = nullptr;
 	}
-
-	new Player;
-
-	new Spawner(70, 70, 70);
-
-	new StrongEnemy(0, 0.1, 40, 80);
-
 	_background = new Background;
+
+	create_game_setup();
 };
 
 
@@ -161,7 +166,7 @@ void	Game::scoreboard(GameObj *p) const{
 
 static bool	isbetween(float n, float a, float b)
 {
-	float error = 0.5;
+	float error = 0.01;
 
 	if (n <= a + error && n >= b - error)
 		return (true);
@@ -173,6 +178,9 @@ static bool	isbetween(float n, float a, float b)
 static bool	objects_will_collide(GameObj *o1, GameObj *o2)
 {
 
+	float col_radius = 1;
+
+	
 	float x1p = o1->getXPos();
 	float x1d = o1->getXDir();
 	float y1p = o1->getYPos();
@@ -182,10 +190,14 @@ static bool	objects_will_collide(GameObj *o1, GameObj *o2)
 	float y2p = o2->getYPos();
 	float y2d = o2->getYDir();
 
+
+	if (fabs(x1p - x2p) + fabs(y1p - y2p) < col_radius * 2)
+		return (true);
+	
 	if (fabs(x1d) <= 0.01 && fabs(y1d) <= 0.01)
-		x1d = 1;
+		x1d = 0.1;
 	if (fabs(x2d) <= 0.01 && fabs(y2d) <= 0.01)
-		x2d = 1;
+		x2d = 0.1;
 
 	float l1a, l1b, l1c, l2a, l2b, l2c;
 

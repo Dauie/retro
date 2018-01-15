@@ -10,6 +10,7 @@ private:
 	int _curModCycle;
 	int _cyclesPerDirChange;
 	int _cyclesPerShot;
+	int _lives;
 	
 public:
 

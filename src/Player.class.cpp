@@ -34,8 +34,6 @@ Player::~Player(void) {
 
 }
 
-
-
 void            Player::move(float dirX, float dirY) {
 	_posX += dirX;
 	if (_posX < 0)
@@ -53,11 +51,16 @@ void            Player::update() {
 
 	if (!_alive)
 	{
+		std::system("afplay ./sounds/lifereduce.mp3 &");
 		_lives--;
 		_alive = true;
 	}
 	if (!_lives)
-	{      
+	{
+		std::system("afplay ./sounds/explosion.mp3 &");
+		for (int i = 0; i < 16; i++) {
+			new Particle(_posX, _posY);
+		}
 		delete this;
         return;
 	}
@@ -93,5 +96,6 @@ int     Player::getLives() const {
 }
 
 void        Player::fireBullet() {
-	new Bullet(0.0, 1.0, _posX, _posY + 1.0);
+	std::system("afplay ./sounds/gunFirePlayer.mp3 &");
+	new Bullet(0.0, 1.0, _posX, _posY + 1.0, true);
 }
