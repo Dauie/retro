@@ -82,7 +82,7 @@ void	StrongEnemy::update(void)
 		}
 		else
 		{
-			_dirY = (float)((rand() % 1000) - 200) / 1000;
+			_dirY = (float)((rand() % 1000) - 200) / 10                             00;
 		}
 	}
 

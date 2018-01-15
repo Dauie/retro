@@ -146,7 +146,7 @@ void	Game::scoreboard(GameObj *p) const{
 	attron(COLOR_PAIR(3));
 	for (int i = 1; i < (int)yMax - 1; i++) {
 		mvaddch(2,i,ACS_HLINE); }
-	w = (yMax / 8) - 1;
+	w = (yMax / 4) - 1;
 	mvprintw(1,1,"%*s:%-*d",w,"Lives",w,l);
 	addch(ACS_VLINE);
 	printw("%*s:%-*d",w,"Score",w,score);
@@ -235,17 +235,26 @@ void			Game::collision(void)
 	{
 		if (!objs[i])
 			continue;
-		for (int j = 0; j < COLLIDABLE; j++)
+		for (int j = 1; j < COLLIDABLE; j++)
 		{
 			if (!objs[j])
 				continue;
 			//check to see if objects occupy same space
 			if ( i != j && objects_will_collide(objs[i], objs[j]))
-			{
-				objs[i]->livingStatus(false);
-				objs[j]->livingStatus(false);
+			{	
+				if ((i==0 && objs[i]->getWall() == false) && (objs[j]->getWall() == false))
+				{
+					objs[i]->livingStatus(false);
+					objs[j]->livingStatus(false);
+				}
+				if ((objs[i]->getWall() == false) && (objs[j]->getWall() == true && i !=0))
+				{
+					objs[i]->livingStatus(false);
+					objs[j]->livingStatus(false);
+				}
+
 				if (objs[i]->getWall()!=objs[j]->getWall())
-					score++;
+						score++;
 			}
 		}
 		//check to see if objects are out of bounds
