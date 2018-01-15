@@ -126,14 +126,13 @@ void Game::GameOver() const{
 
 	attron(COLOR_PAIR(5));
 	mvprintw((xMax/2)-15,(yMax/2)-10,"%s","GAME OVER");
-	sleep (3);
 	doupdate();
-
+	refresh();
+	sleep(5);
 	while (getch() == ERR)
 		refresh();
-		;
-	refresh();
-	sleep(10);
+	;
+	this->~Game();
 	exit(0);
 }
 

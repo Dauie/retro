@@ -6,8 +6,8 @@ Player::Player(void) : GameObj() {
 	_alive = true;
 	_rep = '>';
 	_color = COLOR_CYAN;
-	_posY = 1;
-	_posX = 1;
+	_posY = Game::yMax / 5;
+	_posX = Game::xMax / 2;
 	_dirX = 0;
 	_dirY = 0;
 	_wall = false;

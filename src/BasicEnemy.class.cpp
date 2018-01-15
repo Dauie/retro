@@ -19,7 +19,7 @@ BasicEnemy::BasicEnemy(const BasicEnemy &obj)
 
 BasicEnemy::BasicEnemy(float dirX, float dirY, float posX, float posY)
 {
-	_rep = 'E';
+	_rep = '<';
 	_color  = COLOR_RED;
 	_alive = true;
 	_dirX = dirX;

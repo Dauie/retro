@@ -10,7 +10,7 @@ Particle::Particle(void) {
 
 Particle::Particle(float posX, float posY) : GameObj(1) {
 	_rep = '.';
-	_color = COLOR_RED;
+	_color = COLOR_WHITE;
 	_alive = true;
 	_dirY = rand()%2 == 1 ? (float)(rand() % 5 + 1) * 0.5 : (float)(rand() % 5 + 1) * -0.5;
 	_dirX = rand()%2 == 1 ? (float)(rand() % 5 + 1) * 0.5 : (float)(rand() % 5 + 1) * -0.5;
