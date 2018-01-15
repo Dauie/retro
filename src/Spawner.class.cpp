@@ -54,11 +54,11 @@ void	Spawner::update(void)
 	}
 	else if (_curModCycle % (_cyclesPerSpawn * 5) == 0)
 	{
-		new StrongEnemy(0, -2, _posX - 5, _posY);
+		new StrongEnemy(0, -2, _posX, _posY - 5);
 	}
 	else if (_curModCycle % _cyclesPerSpawn == 0)
 	{
-		new BasicEnemy(fabs(sinf(_angle * M_PI / 8)) * _reverse, -0.5, _posX - 5, _posY);
+		new BasicEnemy(fabs(sinf(_angle * M_PI / 8)) * _reverse, -0.5, _posX, _posY - 5);
 		_angle++;
 	}
 	
