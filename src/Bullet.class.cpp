@@ -9,7 +9,8 @@ Bullet::Bullet(void) : GameObj()
 
 Bullet::Bullet(float dirX, float dirY, float posX, float posY, bool accel, bool wall)
 {
-	_rep = '-';
+	//enemy bullets
+	_rep = 'O';
 	_color = COLOR_YELLOW;
 	_dirX = dirX;
 	_dirY = dirY;

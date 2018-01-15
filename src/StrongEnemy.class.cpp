@@ -26,7 +26,7 @@ StrongEnemy::StrongEnemy(float dirX, float dirY, float posX, float posY)
 {
 	_lives = 3;
 	_rep = 'X';
-	_color = COLOR_RED;
+	_color = COLOR_BLUE;
 	_alive = true;
 	_dirX = dirX;
 	_dirY = dirY;
@@ -42,9 +42,6 @@ StrongEnemy::StrongEnemy(float dirX, float dirY, float posX, float posY)
 StrongEnemy::~StrongEnemy(void)
 {
 	std::system("afplay ./sounds/explosion.mp3 &");
-	for (int i = 0; i < 30; i++) {
-		new Particle(_posX, _posY);
-	}
 }
 
 void	StrongEnemy::update(void)
@@ -88,7 +85,10 @@ void	StrongEnemy::update(void)
 
 	if (_curModCycle % _cyclesPerShot == 0)
 	{
-		new Bullet(-_dirX, -_dirY, _posX, _posY, false, false);
+		float x = float(rand() % 3 - 1) * 0.1;
+		float y = -0.5;
+		
+		new Bullet(x, y, _posX, _posY - 5, false, false);
 	}
 	
 	_curModCycle++;
