@@ -22,7 +22,7 @@ Immortal::Immortal(const Immortal &obj)
 
 Immortal::Immortal(float dirX, float dirY, float posX, float posY)
 {
-	_lives = 20;
+	_lives = 40;
 	_rep = 'X';
 	_color = COLOR_BLUE;
 	_alive = true;
@@ -35,17 +35,20 @@ Immortal::Immortal(float dirX, float dirY, float posX, float posY)
 
 Immortal::~Immortal(void)
 {
+	for (int i = 0; i < 50; i++) {
+		new Particle(_posX, _posY);
+	}
 }
 
 void	Immortal::bullet_hell(void)
 {
-	if (rand() % 100 > 90)
+	if (rand() % 100 > 85)
 	{
 		float x = (float)(rand() % 100 - 50) / 100;
 		float y = (float)(rand() % 100 - 50) /	100;
 		new Bullet(x, y, _posX, _posY, false, false);
 	}
-	if (rand() % 1000 > 995)
+	if (rand() % 1000 > 990)
 	{
 		int lowgap = (int)((float(rand() % 90) / 100) * (float)Game::xMax);
 

@@ -127,13 +127,16 @@ void	Game::drawBorder(void) const{
 //void Game::updateLeaderBoard(void) const{
 //
 //	std::stringstream logmsg;
-//	char msg[] = "Please enter initials:";
+//	char msg[] = "Please enter initials:\n";
 //	char res[32];
 //	std::string ret;
 //
+//	nodelay(stdscr, FALSE);
 //	attron(COLOR_PAIR(5));
 //	clear();
 //	mvprintw(Game::yMax / 2, Game::xMax / 2,"%s", msg);
+//	addstr(msg);
+//	doupdate();
 //	refresh();
 //	sleep(1);
 //	getstr(res);
@@ -161,7 +164,7 @@ void Game::GameOver() const{
 
 
 	attron(COLOR_PAIR(5));
-	mvprintw((xMax/2)-15,(yMax/2)-10,"%s","GAME OVER");
+	mvprintw((xMax/2)-5,(yMax/2)-5,"%s","GAME OVER");
 	doupdate();
 	refresh();
 	sleep(5);
