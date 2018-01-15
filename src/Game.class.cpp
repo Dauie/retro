@@ -9,6 +9,16 @@ unsigned int Game::xMax = 0;
 int Game::input = 0;
 int Game::score =0;
 
+static void	create_game_setup(void)
+{
+	new Player;
+
+	new Spawner(0.9 * (float)Game::xMax, Game::yMax, 70, 0, -0.2);
+	new Spawner(0.7 * (float)Game::xMax, Game::yMax, 70, 10, -0.2);
+	new Spawner(0.5 * (float)Game::xMax, Game::yMax, 70, 20, 0.2);
+	new Spawner(0.3 * (float)Game::xMax, Game::yMax, 70, 30, 0.2);
+}
+
 Game::Game(void) {
     initscr();
     timeout(0);
@@ -43,14 +53,9 @@ Game::Game(void) {
 	for (int i = 0; i < TOTALOBJ; i++) {
 		objs[i] = nullptr;
 	}
-
-	new Player;
-
-	new Spawner(70, 70, 70);
-
-	new StrongEnemy(0, 0.1, 40, 80);
-
 	_background = new Background;
+
+	create_game_setup();
 };
 
 

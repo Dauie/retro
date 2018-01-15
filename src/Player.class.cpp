@@ -93,5 +93,5 @@ int     Player::getLives() const {
 }
 
 void        Player::fireBullet() {
-	new Bullet(0.0, 1.0, _posX, _posY + 1.0);
+	new Bullet(0.0, 1.0, _posX, _posY + 1.0, true);
 }

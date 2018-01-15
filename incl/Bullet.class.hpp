@@ -8,7 +8,7 @@ class  Bullet : public GameObj {
 
 public:
 	Bullet(void);
-	Bullet(float dirX, float dirY, float posX, float posY);
+	Bullet(float dirX, float dirY, float posX, float posY, bool accel);
 	Bullet &operator=(Bullet const &rhs);
 	Bullet(const Bullet &obj);
 	~Bullet(void);
@@ -17,6 +17,7 @@ public:
 	void		update(void);
 
 private:
+	bool _accel;
 };
 
 

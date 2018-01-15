@@ -9,12 +9,15 @@ private:
 
 	int _curModCycle;
 	int _cyclesPerSpawn;
+	float	_angle;
+	float _reverse;
+	
 	Spawner(void);
 	
 public:
 
 	Spawner(const Spawner &obj);
-	Spawner(float posX, float posY, int cyclesPerSpawn);
+	Spawner(float posX, float posY, int cyclesPerSpawn, int sync, float reverse);
 	virtual ~Spawner(void);
 
 	void	update(void);

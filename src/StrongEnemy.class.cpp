@@ -7,6 +7,7 @@ StrongEnemy::StrongEnemy(void)
 
 StrongEnemy::StrongEnemy(const StrongEnemy &obj)
 {
+	_lives = obj._lives;
 	_rep = obj._rep;
 	_color = obj._color;
 	_alive = obj._alive;
@@ -22,6 +23,7 @@ StrongEnemy::StrongEnemy(const StrongEnemy &obj)
 
 StrongEnemy::StrongEnemy(float dirX, float dirY, float posX, float posY)
 {
+	_lives = 3;
 	_rep = 'X';
 	_color = COLOR_RED;
 	_alive = true;
@@ -37,6 +39,9 @@ StrongEnemy::StrongEnemy(float dirX, float dirY, float posX, float posY)
 
 StrongEnemy::~StrongEnemy(void)
 {
+		for (int i = 0; i < 30; i++) {
+			new Particle(_posX, _posY);
+	}
 }
 
 void	StrongEnemy::update(void)
@@ -44,6 +49,12 @@ void	StrongEnemy::update(void)
 	
 	if (!_alive)
 	{
+		_lives--;
+		_alive = true;
+	}
+	if (!_lives)
+	{
+
 		delete this;
 		return;
 	}
@@ -71,7 +82,7 @@ void	StrongEnemy::update(void)
 
 	if (_curModCycle % _cyclesPerShot == 0)
 	{
-		new Bullet(0.0, _dirY >= 0 ? -_dirY: _dirY, _posX, _posY - 1.0);
+		new Bullet(-_dirX, -_dirY, _posX, _posY, false);
 	}
 	
 	_curModCycle++;
