@@ -1,23 +1,30 @@
 
-#include "../incl/Player.class.hpp"
+#include "rush00.hpp"
 
 Player::Player(void) : GameObj() {
-    _lives = 3;
-    _rep = '>';
-    _x = 1;
-    _y = 1;
+	_lives = 3;
+	_alive = true;
+	_rep = '>';
+	_color = COLOR_CYAN;
+	_posY = Game::yMax / 5;
+	_posX = Game::xMax / 2;
+	_dirX = 0;
+	_dirY = 0;
+	_wall = false;
 }
 
 Player &Player::operator=(Player const &rhs) {
     if (this != &rhs) {
         return (*this);
     }
-    _rep = rhs.getRep();
-    _maxHp = rhs.getMaxHp();
-    _hp = rhs.getHp();
-    _speed = rhs.getSpeed();
-    _x = rhs.getX();
-    _y = rhs.getY();
+    _rep = rhs._rep;
+	_color = rhs._color;
+    _alive = rhs._alive;
+    _dirX = rhs._dirX;
+    _dirY = rhs._dirY;
+    _posY = rhs._posY;
+    _posX = rhs._posX;
+    _wall = rhs._wall;
     return (*this);
 }
 
@@ -29,36 +36,81 @@ Player::~Player(void) {
 
 }
 
-void            Player::updateSelf(int input, Bullet *bullets, int count, int yMax, int xMax) {
+void            Player::move(float dirX, float dirY) {
+	_posX += dirX;
+	if (_posX < 3)
+		_posX = Game::xMax -2;
+	else if (_posX > Game::xMax-2)
+		_posX = 3;
+	_posY += dirY;
+	if (_posY < 0)
+		_posY = 0;
+	else if (_posY > Game::yMax-1)
+		_posY = Game::yMax-1;
+}
+void            Player::update() {
 
-    this->setYMax(yMax);
-    this->setXMax(xMax);
+	if (!_alive)
+	{
+		attron(COLOR_PAIR(8));
+		for (int i = 0; i < (int)Game::xMax; i++) {
+			for (int j = 0; j < (int)Game::yMax; j++){
+				mvprintw(i, j, "%c", '|');
+			}
+		}
+		refresh();
+		usleep(30000);
 
-    switch(input) {
+		attroff(COLOR_PAIR(8));
+		std::system("afplay ./sounds/lifereduce.mp3 &");
+		if (_lives > 0)
+			_lives--;
+		_alive = true;
+	}
+	if (_lives <=0)
+	{
+		std::system("afplay ./sounds/explosion.mp3 &");
+		for (int i = 0; i < 16; i++) {
+			new Particle(_posX, _posY);
+		}
+		delete this;
+        return;
+	}
+	
+    switch(Game::input) {
         case UP:
-            this->moveUp();
+            this->setXDir(-1.0);
             break;
         case DOWN:
-            this->moveDown();
+            this->setXDir(1.0);
             break;
         case LEFT:
-            this->moveLeft();
+            this->setYDir(-1.0);
             break;
         case RIGHT:
-            this->moveRight();
+            this->setYDir(1.0);
             break;
         case FIRE:
-            this->fireBullet(bullets, count );
+            this->fireBullet();
     }
+	this->move(this->_dirX, this->_dirY);
+	if (_dirX == 0 && _dirY == 0)
+		return;
+	_dirX += _dirX < 0.0 ? 0.5 : 0.0;
+	_dirY += _dirY < 0.0 ? 0.5 : 0.0;
+	_dirX -= _dirX > 0.0 ? 0.5 : 0.0;
+	_dirY -= _dirY > 0.0 ? 0.5 : 0.0;
 }
 
-void        Player::fireBullet(Bullet *bullets, int len) {
-    for (int i = 0; i < len; i++) {
-        if (bullets[i].getHp() == 0) {
-            bullets[i].setHp(bullets[i].getMaxHp());
-            bullets[i].setDirection(1);
-            bullets[i].jumpTo(this->_y, this->_x + 1);
-            break;
-        }
-    }
+
+int     Player::getLives() const {
+    return _lives;
+}
+
+void        Player::fireBullet() {
+	std::system("afplay ./sounds/gunFirePlayer.mp3 &");
+	float d = 0;
+	if (Game::score > 2000)
+		d = (float)(rand() % 100 - 50) / 3000;
+	new Bullet(d, 1.0, _posX, _posY + 1.0, true);
 }

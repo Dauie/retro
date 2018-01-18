@@ -1,12 +1,9 @@
-//
-// Created by Robert LUTT on 1/12/18.
-//
+
 
 #ifndef PLAYER_CLASS_HPP
 #define PLAYER_CLASS_HPP
 
-#include "GameObj.class.hpp"
-#include "Bullet.class.hpp"
+#include "rush00.hpp"
 
 class Player : public GameObj {
 
@@ -16,9 +13,11 @@ public:
     Player(const Player &obj);
     ~Player(void);
 
-    void fireBullet(Bullet *bullets, int len);
-    void updateSelf(int input, Bullet *bullets, int count, int yMax, int xMax);
-
+    void fireBullet(void);
+    void update(void);
+	void move(float dirX, float dirY);
+	int  getLives() const;
+	
 private:
     unsigned int    _lives;
 };

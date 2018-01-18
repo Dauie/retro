@@ -1,57 +1,87 @@
 //
 // Created by Robert LUTT on 1/12/18.
 //
-#include "../incl/Bullet.class.hpp"
+#include "rush00.hpp"
 
-Bullet::Bullet(void) : GameObj() {
-    _hp = 0;
-    _direction = 1;
-    _speed = 10;
-    _rep = '-';
+Bullet::Bullet(void) : GameObj()
+{
 }
 
-Bullet::Bullet(int direction) : GameObj() {
-   _direction = direction;
+Bullet::Bullet(float dirX, float dirY, float posX, float posY, bool accel, bool wall)
+{
+	//enemy bullets
+	_rep = '-';
+	_color = COLOR_YELLOW;
+	_dirX = dirX;
+	_dirY = dirY;
+	_posX = posX;
+	_posY = posY;
+	_accel = accel;
+	_alive = true;
+	_wall= wall;
+}
+
+Bullet::Bullet(float dirX, float dirY, float posX, float posY, bool accel)
+{
+	_rep = '=';
+	_color = COLOR_YELLOW;
+	_dirX = dirX;
+	_dirY = dirY;
+	_posX = posX;
+	_posY = posY;
+	_accel = accel;
+	_alive = true;
+	_wall= true;
 }
 
 
-Bullet &Bullet::operator=(Bullet const &rhs) {
+
+Bullet &Bullet::operator=(Bullet const &rhs)
+{
     if (this != &rhs) {
-        return (*this);
+		_rep = rhs._rep;
+		_color = rhs._color;
+		_dirX = rhs._dirX;
+		_dirY = rhs._dirY;
+		_posY = rhs._posY;
+		_posX = rhs._posX;
+		_accel = rhs._accel;
+		_alive = rhs._alive;
+		_wall = rhs._wall;
     }
-    _rep = rhs.getRep();
-    _maxHp = rhs.getMaxHp();
-    _hp = rhs.getHp();
-    _speed = rhs.getSpeed();
-    _x = rhs.getX();
-    _y = rhs.getY();
-    _direction = rhs.getDirection();
     return (*this);
 }
 
-Bullet::Bullet(const Bullet &obj){
+Bullet::Bullet(const Bullet &obj)
+{
     *this = obj;
 }
 
-Bullet::~Bullet(void){
-
+Bullet::~Bullet(void)
+{
 }
 
-void        Bullet::setDirection(int direction) {
-    _direction = direction;
-}
 
-int        Bullet::getDirection() const {
-    return (_direction);
-}
 
-void        Bullet::updateSelf(int x, int y) {
-    setXMax(x);
-    setYMax(y);
-    if (getHp() == 0)
-        return;
-    if (_direction == 1)
-        this->moveRight();
-    else
-        this->moveLeft();
+void		Bullet::move(float x, float y)
+{
+	(void)x;
+	(void)y;
+	if (_accel)
+	{
+		if (_dirX)
+			_dirX += _dirX * 0.1;
+		if (_dirY)
+			_dirY += _dirY * 0.1;
+	}
+	_posX += _dirX;
+	_posY += _dirY;
+}
+void        Bullet::update() {
+	if (!_alive)
+	{
+		delete this;
+		return;
+	}
+	move(0.0, 0.0);
 }

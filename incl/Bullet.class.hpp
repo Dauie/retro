@@ -1,27 +1,24 @@
-//
-// Created by Robert LUTT on 1/12/18.
-//
 
 #ifndef BULLET_CLASS_HPP
 #define BULLET_CLASS_HPP
 
-#include "GameObj.class.hpp"
+#include "rush00.hpp"
 
-class   Bullet : public GameObj {
+class  Bullet : public GameObj {
 
 public:
-    Bullet(void);
-    Bullet(int);
-    Bullet &operator=(Bullet const &rhs);
-    Bullet(const Bullet &obj);
-    ~Bullet(void);
-    void    setDirection(int);
-    int     getDirection(void) const;
-    void    updateSelf(int x, int y);
+	Bullet(void);
+	Bullet(float dirX, float dirY, float posX, float posY, bool accel);
+	Bullet(float dirX, float dirY, float posX, float posY, bool accel, bool wall);
+	Bullet &operator=(Bullet const &rhs);
+	Bullet(const Bullet &obj);
+	~Bullet(void);
+
+	void		move(float x, float y);
+	void		update(void);
 
 private:
-    /*Greater than 0 right, less than 0 left*/
-    int _direction;
+	bool _accel;
 };
 
 
