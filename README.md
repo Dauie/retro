@@ -1,4 +1,4 @@
-#RETRO
+# RETRO
 
 Retro is a bullet hell shooter writeen in C++ && Ncurses
 It's written in a canonical & pure Object-oriented fasion, and gives a great example to those learning C++.
