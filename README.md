@@ -21,7 +21,7 @@ Created with my friends Theo Walton & Ian Wagner.
 `make`
 
 
-`./retro`
+`./ft_retro`
 
 ## Controls
 
