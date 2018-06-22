@@ -8,7 +8,7 @@ Spawn! Shoot! Survive!
 
 How long can you last?
 
-Created with my friends Theo Walton & Ian Wagner.
+Created with my friends Theo Walton & Ian Wagner as a weekend project.
 
 ## How to run:
 
