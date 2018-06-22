@@ -1,7 +1,7 @@
 # RETRO
 
 Retro is a bullet hell shooter in C++ && Ncurses
-It's written in a canonical & pure Object-oriented fasion, and gives a great example to those learning C++.
+It's written in a canonical & pure object-oriented fasion, and gives a great example to those learning C++.
 
 Spawn! Shoot! Survive!
 
