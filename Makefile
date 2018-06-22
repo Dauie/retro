@@ -1,4 +1,4 @@
-NAME = ft_retro
+NAME = retro
 
 CC = clang++
 
